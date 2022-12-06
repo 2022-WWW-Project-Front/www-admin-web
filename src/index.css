@@ -13,7 +13,7 @@
     url('/public/fonts/Pretendard-Bold.woff') format('woff'),
     url('/public/fonts/Pretendard-Bold.ttf') format('truetype');
   font-weight: 700;
-  font-style: normal;
+  font-style: bold;
   font-display: swap;
 }
 @font-face {
@@ -26,6 +26,8 @@
 }
 
 :root {
-  min-width: 820px;
-  max-width: 1980px;
+  /* min-width: 768px; */
+  /* max-width: 2048px; */
+  /* min-height: 721px; */
+  /* max-height: 1536px; */
 }

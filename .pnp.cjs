@@ -30,6 +30,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@reduxjs/toolkit", "virtual:051ed06a24de2cf8dfbdbc06c80a73874a70a4b63c92eb13668c054f2636f9bef305dc149b9fd60d97d6d749d68671533d9ec5f4622b2bd7935225ad2fa578a9#npm:1.8.6"],\
             ["@types/eslint", "npm:8.4.9"],\
+            ["@types/node", "npm:18.11.10"],\
             ["@types/prettier", "npm:2.7.1"],\
             ["@types/react", "npm:18.0.24"],\
             ["@types/react-dom", "npm:18.0.8"],\
@@ -46,8 +47,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-router-dom", "virtual:051ed06a24de2cf8dfbdbc06c80a73874a70a4b63c92eb13668c054f2636f9bef305dc149b9fd60d97d6d749d68671533d9ec5f4622b2bd7935225ad2fa578a9#npm:6.4.3"],\
             ["styled-components", "virtual:051ed06a24de2cf8dfbdbc06c80a73874a70a4b63c92eb13668c054f2636f9bef305dc149b9fd60d97d6d749d68671533d9ec5f4622b2bd7935225ad2fa578a9#npm:5.3.6"],\
             ["styled-reset", "virtual:051ed06a24de2cf8dfbdbc06c80a73874a70a4b63c92eb13668c054f2636f9bef305dc149b9fd60d97d6d749d68671533d9ec5f4622b2bd7935225ad2fa578a9#npm:4.4.2"],\
+            ["swiper", "npm:8.4.5"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=701156"],\
-            ["vite", "virtual:051ed06a24de2cf8dfbdbc06c80a73874a70a4b63c92eb13668c054f2636f9bef305dc149b9fd60d97d6d749d68671533d9ec5f4622b2bd7935225ad2fa578a9#npm:3.2.1"]\
+            ["vite", "virtual:051ed06a24de2cf8dfbdbc06c80a73874a70a4b63c92eb13668c054f2636f9bef305dc149b9fd60d97d6d749d68671533d9ec5f4622b2bd7935225ad2fa578a9#npm:3.2.1"],\
+            ["vite-tsconfig-paths", "virtual:051ed06a24de2cf8dfbdbc06c80a73874a70a4b63c92eb13668c054f2636f9bef305dc149b9fd60d97d6d749d68671533d9ec5f4622b2bd7935225ad2fa578a9#npm:3.6.0"]\
           ],\
           "linkType": "SOFT"\
         }]\
@@ -473,6 +476,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["@cush/relative", [\
+        ["npm:1.0.0", {\
+          "packageLocation": "./.yarn/cache/@cush-relative-npm-1.0.0-5b4e80274a-708681b619.zip/node_modules/@cush/relative/",\
+          "packageDependencies": [\
+            ["@cush/relative", "npm:1.0.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["@emotion/is-prop-valid", [\
         ["npm:1.2.0", {\
           "packageLocation": "./.yarn/cache/@emotion-is-prop-valid-npm-1.2.0-332d343e3d-cc7a19850a.zip/node_modules/@emotion/is-prop-valid/",\
@@ -781,6 +793,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@types-json-schema-npm-7.0.11-79462ae5ca-527bddfe62.zip/node_modules/@types/json-schema/",\
           "packageDependencies": [\
             ["@types/json-schema", "npm:7.0.11"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@types/node", [\
+        ["npm:18.11.10", {\
+          "packageLocation": "./.yarn/cache/@types-node-npm-18.11.10-cca0d46cb2-0f60cb090b.zip/node_modules/@types/node/",\
+          "packageDependencies": [\
+            ["@types/node", "npm:18.11.10"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -1205,6 +1226,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["any-promise", [\
+        ["npm:1.3.0", {\
+          "packageLocation": "./.yarn/cache/any-promise-npm-1.3.0-f34eeaa7e7-0ee8a9bdbe.zip/node_modules/any-promise/",\
+          "packageDependencies": [\
+            ["any-promise", "npm:1.3.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["aproba", [\
         ["npm:2.0.0", {\
           "packageLocation": "./.yarn/cache/aproba-npm-2.0.0-8716bcfde6-5615cadcfb.zip/node_modules/aproba/",\
@@ -1535,6 +1565,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["commander", [\
+        ["npm:4.1.1", {\
+          "packageLocation": "./.yarn/cache/commander-npm-4.1.1-22a0fe921b-d7b9913ff9.zip/node_modules/commander/",\
+          "packageDependencies": [\
+            ["commander", "npm:4.1.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["concat-map", [\
         ["npm:0.0.1", {\
           "packageLocation": "./.yarn/cache/concat-map-npm-0.0.1-85a921b7ee-902a9f5d89.zip/node_modules/concat-map/",\
@@ -1698,6 +1737,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["doctrine", "npm:3.0.0"],\
             ["esutils", "npm:2.0.3"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["dom7", [\
+        ["npm:4.0.4", {\
+          "packageLocation": "./.yarn/cache/dom7-npm-4.0.4-637bc4420a-b38604f74e.zip/node_modules/dom7/",\
+          "packageDependencies": [\
+            ["dom7", "npm:4.0.4"],\
+            ["ssr-window", "npm:4.0.2"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -2499,6 +2548,19 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["glob", [\
+        ["npm:7.1.6", {\
+          "packageLocation": "./.yarn/cache/glob-npm-7.1.6-1ce3a5189a-351d549dd9.zip/node_modules/glob/",\
+          "packageDependencies": [\
+            ["glob", "npm:7.1.6"],\
+            ["fs.realpath", "npm:1.0.0"],\
+            ["inflight", "npm:1.0.6"],\
+            ["inherits", "npm:2.0.4"],\
+            ["minimatch", "npm:3.1.2"],\
+            ["once", "npm:1.4.0"],\
+            ["path-is-absolute", "npm:1.0.1"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
         ["npm:7.2.3", {\
           "packageLocation": "./.yarn/cache/glob-npm-7.2.3-2d866d17a5-29452e97b3.zip/node_modules/glob/",\
           "packageDependencies": [\
@@ -2543,6 +2605,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["glob-regex", [\
+        ["npm:0.3.2", {\
+          "packageLocation": "./.yarn/cache/glob-regex-npm-0.3.2-9215b51c6b-4f7adee18e.zip/node_modules/glob-regex/",\
+          "packageDependencies": [\
+            ["glob-regex", "npm:0.3.2"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["globals", [\
         ["npm:11.12.0", {\
           "packageLocation": "./.yarn/cache/globals-npm-11.12.0-1fa7f41a6c-67051a45ec.zip/node_modules/globals/",\
@@ -2571,6 +2642,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["ignore", "npm:5.2.0"],\
             ["merge2", "npm:1.4.1"],\
             ["slash", "npm:3.0.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["globrex", [\
+        ["npm:0.1.2", {\
+          "packageLocation": "./.yarn/cache/globrex-npm-0.1.2-ddda94f2d0-adca162494.zip/node_modules/globrex/",\
+          "packageDependencies": [\
+            ["globrex", "npm:0.1.2"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -3095,6 +3175,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["lines-and-columns", [\
+        ["npm:1.2.4", {\
+          "packageLocation": "./.yarn/cache/lines-and-columns-npm-1.2.4-d6c7cc5799-0c37f9f7fa.zip/node_modules/lines-and-columns/",\
+          "packageDependencies": [\
+            ["lines-and-columns", "npm:1.2.4"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["locate-path", [\
         ["npm:6.0.0", {\
           "packageLocation": "./.yarn/cache/locate-path-npm-6.0.0-06a1e4c528-72eb661788.zip/node_modules/locate-path/",\
@@ -3242,6 +3331,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["minimist", [\
+        ["npm:1.2.7", {\
+          "packageLocation": "./.yarn/cache/minimist-npm-1.2.7-51d33b1371-7346574a10.zip/node_modules/minimist/",\
+          "packageDependencies": [\
+            ["minimist", "npm:1.2.7"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["minipass", [\
         ["npm:3.3.5", {\
           "packageLocation": "./.yarn/cache/minipass-npm-3.3.5-a555b091e7-f89f02bcaa.zip/node_modules/minipass/",\
@@ -3337,6 +3435,18 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/ms-npm-2.1.3-81ff3cfac1-aa92de6080.zip/node_modules/ms/",\
           "packageDependencies": [\
             ["ms", "npm:2.1.3"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["mz", [\
+        ["npm:2.7.0", {\
+          "packageLocation": "./.yarn/cache/mz-npm-2.7.0-ec3cef4ec2-8427de0ece.zip/node_modules/mz/",\
+          "packageDependencies": [\
+            ["mz", "npm:2.7.0"],\
+            ["any-promise", "npm:1.3.0"],\
+            ["object-assign", "npm:4.1.1"],\
+            ["thenify-all", "npm:1.6.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -3634,6 +3744,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["pirates", [\
+        ["npm:4.0.5", {\
+          "packageLocation": "./.yarn/cache/pirates-npm-4.0.5-22f8e827ce-c9994e61b8.zip/node_modules/pirates/",\
+          "packageDependencies": [\
+            ["pirates", "npm:4.0.5"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["postcss", [\
         ["npm:8.4.18", {\
           "packageLocation": "./.yarn/cache/postcss-npm-8.4.18-f1d73c0a84-9349fd9984.zip/node_modules/postcss/",\
@@ -3863,6 +3982,20 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["inherits", "npm:2.0.4"],\
             ["string_decoder", "npm:1.3.0"],\
             ["util-deprecate", "npm:1.0.2"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["recrawl-sync", [\
+        ["npm:2.2.3", {\
+          "packageLocation": "./.yarn/cache/recrawl-sync-npm-2.2.3-f022ecf6b6-d08e0fa1df.zip/node_modules/recrawl-sync/",\
+          "packageDependencies": [\
+            ["recrawl-sync", "npm:2.2.3"],\
+            ["@cush/relative", "npm:1.0.0"],\
+            ["glob-regex", "npm:0.3.2"],\
+            ["slash", "npm:3.0.0"],\
+            ["sucrase", "npm:3.29.0"],\
+            ["tslib", "npm:1.14.1"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -4191,6 +4324,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["ssr-window", [\
+        ["npm:4.0.2", {\
+          "packageLocation": "./.yarn/cache/ssr-window-npm-4.0.2-01f9c0151e-df18260092.zip/node_modules/ssr-window/",\
+          "packageDependencies": [\
+            ["ssr-window", "npm:4.0.2"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["ssri", [\
         ["npm:9.0.1", {\
           "packageLocation": "./.yarn/cache/ssri-npm-9.0.1-33ce27f4f8-fb58f5e46b.zip/node_modules/ssri/",\
@@ -4274,6 +4416,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["strip-bom", [\
+        ["npm:3.0.0", {\
+          "packageLocation": "./.yarn/cache/strip-bom-npm-3.0.0-71e8f81ff9-8d50ff27b7.zip/node_modules/strip-bom/",\
+          "packageDependencies": [\
+            ["strip-bom", "npm:3.0.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["strip-json-comments", [\
         ["npm:3.1.1", {\
           "packageLocation": "./.yarn/cache/strip-json-comments-npm-3.1.1-dcb2324823-492f73e272.zip/node_modules/strip-json-comments/",\
@@ -4344,6 +4495,21 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["sucrase", [\
+        ["npm:3.29.0", {\
+          "packageLocation": "./.yarn/cache/sucrase-npm-3.29.0-9a73320e42-fc8f04c34f.zip/node_modules/sucrase/",\
+          "packageDependencies": [\
+            ["sucrase", "npm:3.29.0"],\
+            ["commander", "npm:4.1.1"],\
+            ["glob", "npm:7.1.6"],\
+            ["lines-and-columns", "npm:1.2.4"],\
+            ["mz", "npm:2.7.0"],\
+            ["pirates", "npm:4.0.5"],\
+            ["ts-interface-checker", "npm:0.1.13"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["supports-color", [\
         ["npm:5.5.0", {\
           "packageLocation": "./.yarn/cache/supports-color-npm-5.5.0-183ac537bc-95f6f4ba5a.zip/node_modules/supports-color/",\
@@ -4367,6 +4533,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/supports-preserve-symlinks-flag-npm-1.0.0-f17c4d0028-53b1e247e6.zip/node_modules/supports-preserve-symlinks-flag/",\
           "packageDependencies": [\
             ["supports-preserve-symlinks-flag", "npm:1.0.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["swiper", [\
+        ["npm:8.4.5", {\
+          "packageLocation": "./.yarn/unplugged/swiper-npm-8.4.5-c5c16f4b35/node_modules/swiper/",\
+          "packageDependencies": [\
+            ["swiper", "npm:8.4.5"],\
+            ["dom7", "npm:4.0.4"],\
+            ["ssr-window", "npm:4.0.2"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -4395,6 +4572,26 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["thenify", [\
+        ["npm:3.3.1", {\
+          "packageLocation": "./.yarn/cache/thenify-npm-3.3.1-030bedb22c-84e1b804bf.zip/node_modules/thenify/",\
+          "packageDependencies": [\
+            ["thenify", "npm:3.3.1"],\
+            ["any-promise", "npm:1.3.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["thenify-all", [\
+        ["npm:1.6.0", {\
+          "packageLocation": "./.yarn/cache/thenify-all-npm-1.6.0-96309bbc8b-dba7cc8a23.zip/node_modules/thenify-all/",\
+          "packageDependencies": [\
+            ["thenify-all", "npm:1.6.0"],\
+            ["thenify", "npm:3.3.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["to-fast-properties", [\
         ["npm:2.0.0", {\
           "packageLocation": "./.yarn/cache/to-fast-properties-npm-2.0.0-0dc60cc481-be2de62fe5.zip/node_modules/to-fast-properties/",\
@@ -4410,6 +4607,27 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["to-regex-range", "npm:5.0.1"],\
             ["is-number", "npm:7.0.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["ts-interface-checker", [\
+        ["npm:0.1.13", {\
+          "packageLocation": "./.yarn/cache/ts-interface-checker-npm-0.1.13-0c7b064494-20c29189c2.zip/node_modules/ts-interface-checker/",\
+          "packageDependencies": [\
+            ["ts-interface-checker", "npm:0.1.13"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["tsconfig-paths", [\
+        ["npm:4.1.1", {\
+          "packageLocation": "./.yarn/cache/tsconfig-paths-npm-4.1.1-00440a84fa-3a1c6c8f61.zip/node_modules/tsconfig-paths/",\
+          "packageDependencies": [\
+            ["tsconfig-paths", "npm:4.1.1"],\
+            ["json5", "npm:2.2.1"],\
+            ["minimist", "npm:1.2.7"],\
+            ["strip-bom", "npm:3.0.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -4607,6 +4825,32 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["vite-tsconfig-paths", [\
+        ["npm:3.6.0", {\
+          "packageLocation": "./.yarn/cache/vite-tsconfig-paths-npm-3.6.0-11c8402342-3b079d7fd4.zip/node_modules/vite-tsconfig-paths/",\
+          "packageDependencies": [\
+            ["vite-tsconfig-paths", "npm:3.6.0"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:051ed06a24de2cf8dfbdbc06c80a73874a70a4b63c92eb13668c054f2636f9bef305dc149b9fd60d97d6d749d68671533d9ec5f4622b2bd7935225ad2fa578a9#npm:3.6.0", {\
+          "packageLocation": "./.yarn/__virtual__/vite-tsconfig-paths-virtual-39e2d52ba5/0/cache/vite-tsconfig-paths-npm-3.6.0-11c8402342-3b079d7fd4.zip/node_modules/vite-tsconfig-paths/",\
+          "packageDependencies": [\
+            ["vite-tsconfig-paths", "virtual:051ed06a24de2cf8dfbdbc06c80a73874a70a4b63c92eb13668c054f2636f9bef305dc149b9fd60d97d6d749d68671533d9ec5f4622b2bd7935225ad2fa578a9#npm:3.6.0"],\
+            ["@types/vite", null],\
+            ["debug", "virtual:9e3a462140b35a19ddb3d48ebde58d66740d97f4c0386bc195c327fc2c44fa59f43cbcb382dd9f194b16d0dd6c0a138aadd4a9de84088f88e25946598f97cb88#npm:4.3.4"],\
+            ["globrex", "npm:0.1.2"],\
+            ["recrawl-sync", "npm:2.2.3"],\
+            ["tsconfig-paths", "npm:4.1.1"],\
+            ["vite", "virtual:051ed06a24de2cf8dfbdbc06c80a73874a70a4b63c92eb13668c054f2636f9bef305dc149b9fd60d97d6d749d68671533d9ec5f4622b2bd7935225ad2fa578a9#npm:3.2.1"]\
+          ],\
+          "packagePeers": [\
+            "@types/vite",\
+            "vite"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["which", [\
         ["npm:2.0.2", {\
           "packageLocation": "./.yarn/cache/which-npm-2.0.2-320ddf72f7-1a5c563d3c.zip/node_modules/which/",\
@@ -4666,6 +4910,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["www-admin-web", "workspace:."],\
             ["@reduxjs/toolkit", "virtual:051ed06a24de2cf8dfbdbc06c80a73874a70a4b63c92eb13668c054f2636f9bef305dc149b9fd60d97d6d749d68671533d9ec5f4622b2bd7935225ad2fa578a9#npm:1.8.6"],\
             ["@types/eslint", "npm:8.4.9"],\
+            ["@types/node", "npm:18.11.10"],\
             ["@types/prettier", "npm:2.7.1"],\
             ["@types/react", "npm:18.0.24"],\
             ["@types/react-dom", "npm:18.0.8"],\
@@ -4682,8 +4927,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-router-dom", "virtual:051ed06a24de2cf8dfbdbc06c80a73874a70a4b63c92eb13668c054f2636f9bef305dc149b9fd60d97d6d749d68671533d9ec5f4622b2bd7935225ad2fa578a9#npm:6.4.3"],\
             ["styled-components", "virtual:051ed06a24de2cf8dfbdbc06c80a73874a70a4b63c92eb13668c054f2636f9bef305dc149b9fd60d97d6d749d68671533d9ec5f4622b2bd7935225ad2fa578a9#npm:5.3.6"],\
             ["styled-reset", "virtual:051ed06a24de2cf8dfbdbc06c80a73874a70a4b63c92eb13668c054f2636f9bef305dc149b9fd60d97d6d749d68671533d9ec5f4622b2bd7935225ad2fa578a9#npm:4.4.2"],\
+            ["swiper", "npm:8.4.5"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=701156"],\
-            ["vite", "virtual:051ed06a24de2cf8dfbdbc06c80a73874a70a4b63c92eb13668c054f2636f9bef305dc149b9fd60d97d6d749d68671533d9ec5f4622b2bd7935225ad2fa578a9#npm:3.2.1"]\
+            ["vite", "virtual:051ed06a24de2cf8dfbdbc06c80a73874a70a4b63c92eb13668c054f2636f9bef305dc149b9fd60d97d6d749d68671533d9ec5f4622b2bd7935225ad2fa578a9#npm:3.2.1"],\
+            ["vite-tsconfig-paths", "virtual:051ed06a24de2cf8dfbdbc06c80a73874a70a4b63c92eb13668c054f2636f9bef305dc149b9fd60d97d6d749d68671533d9ec5f4622b2bd7935225ad2fa578a9#npm:3.6.0"]\
           ],\
           "linkType": "SOFT"\
         }]\
