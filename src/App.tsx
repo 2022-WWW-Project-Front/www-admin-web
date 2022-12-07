@@ -1,6 +1,11 @@
 import React from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import SignIn from './pages/Signin'
+import NoInformation from './pages/NoInformation'
+import Register1 from './pages/RegisterInformation/Register1'
+import Register2 from './pages/RegisterInformation/Register2'
+import Register3 from './pages/RegisterInformation/Register3'
+import EditInformation from './pages/EditInformation'
 import './index.css'
 
 const App = () => {
@@ -10,7 +15,12 @@ const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route index element={<SignIn />} />
+        <Route path="/" element={<SignIn />} />
+        <Route path="/NoInformation" element={<NoInformation />} />
+        <Route path="/RegisterInformation/1" element={<Register1 />} />
+        <Route path="/RegisterInformation/2" element={<Register2 />} />
+        <Route path="/RegisterInformation/3" element={<Register3 />} />
+        <Route path="/EditInformation" element={<EditInformation />} />
       </Routes>
     </BrowserRouter>
   )

@@ -1,8 +1,8 @@
 import React from 'react'
-import Signin from '../layout/signin/Signin'
+import SigninLayout from '@layout/signin/Signin'
 
-const Login = () => {
-  return <Signin></Signin>
+const Signin = () => {
+  return <SigninLayout />
 }
 
-export default Login
+export default Signin
