@@ -1,7 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const NoInformation = () => {
+interface props {
+  goRegister: Function
+}
+
+const NoInformationLayout = ({ ...props }) => {
   return (
     <Background>
       <Logo>
@@ -31,7 +35,7 @@ const NoInformation = () => {
         <MainSentence>There are no registered works</MainSentence>
         <br />
         <SubSentence>등록된 작품이 없습니다 신규 등록 해주세요</SubSentence>
-        <Button>신규등록 하러가기</Button>
+        <Button onClick={props.goRegister()}>신규등록 하러가기</Button>
       </Container>
     </Background>
   )
@@ -60,13 +64,14 @@ const Container = styled.div`
 const MainSentence = styled.span`
   position: relative;
   display: flex;
-  justify-content: center;
+  text-align: center;
   font: calc(100vh * 2.8 / 100) www;
   top: calc(100vh * 13.3 / 100);
 `
 const SubSentence = styled.span`
   position: relative;
   display: flex;
+  text-align: center;
   justify-content: center;
   font: calc(100vh * 2 / 100) Pretendard;
   top: calc(100vh * 13.5 / 100);
@@ -87,4 +92,4 @@ const Button = styled.div`
   cursor: pointer;
 `
 
-export default NoInformation
+export default NoInformationLayout

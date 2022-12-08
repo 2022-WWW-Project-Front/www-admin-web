@@ -1,9 +1,18 @@
 import React from 'react'
 import styled from 'styled-components'
-import Check from '@layout/common/Check'
-import NonCheck from '@layout/common/NonCheck'
+import Checked from '@layout/common/Checked'
 
-const RegisterInformation1 = () => {
+interface props {
+  checkValue: Function
+  artistNameChange: Function
+  contractChange: Function
+  goStep2: Function
+  selectValue: string
+  artistName?: string
+  contact?: string
+}
+
+const RegisterStep1Layout = ({ ...props }: props) => {
   return (
     <Container>
       <Genre>
@@ -12,42 +21,82 @@ const RegisterInformation1 = () => {
           <Visual>
             <VisualImg />
             <SelectCheck>
-              <Check />
-              <Selector>시각</Selector>
+              <Radio
+                type="radio"
+                name="select"
+                value="시각"
+                onClick={props.checkValue()}
+                defaultChecked={props.selectValue === '시각'}
+              />
+              {props.selectValue === '시각' ? (
+                <Selector>시각</Selector>
+              ) : (
+                <Selector style={{ color: '#676767' }}>시각</Selector>
+              )}
             </SelectCheck>
           </Visual>
           <Media>
             <MediaImg />
-            <NotSelectCheck>
-              <NonCheck />
-              <NotSelector>미디어</NotSelector>
-            </NotSelectCheck>
+            <SelectCheck>
+              <Radio
+                type="radio"
+                name="select"
+                value="미디어"
+                onClick={props.checkValue()}
+                defaultChecked={props.selectValue === '미디어'}
+              />
+              {props.selectValue === '미디어' ? (
+                <Selector>미디어</Selector>
+              ) : (
+                <Selector style={{ color: '#676767' }}>미디어</Selector>
+              )}
+            </SelectCheck>
           </Media>
           <Living>
             <LivingImg />
-            <NotSelectCheck>
-              <NonCheck />
-              <NotSelector>리빙</NotSelector>
-            </NotSelectCheck>
+            <SelectCheck>
+              <Radio
+                type="radio"
+                name="select"
+                value="리빙"
+                onClick={props.checkValue()}
+                defaultChecked={props.selectValue === '리빙'}
+              />
+              {props.selectValue === '리빙' ? (
+                <Selector>리빙</Selector>
+              ) : (
+                <Selector style={{ color: '#676767' }}>리빙</Selector>
+              )}
+            </SelectCheck>
           </Living>
           <Fashion>
             <FashionImg />
-            <NotSelectCheck>
-              <NonCheck />
-              <NotSelector>패션</NotSelector>
-            </NotSelectCheck>
+            <SelectCheck>
+              <Radio
+                type="radio"
+                name="select"
+                value="패션"
+                onClick={props.checkValue()}
+                defaultChecked={props.selectValue === '패션'}
+              />
+              {props.selectValue === '패션' ? (
+                <Selector>패션</Selector>
+              ) : (
+                <Selector style={{ color: '#676767' }}>패션</Selector>
+              )}
+            </SelectCheck>
           </Fashion>
         </Select>
       </Genre>
       <Author>
         <AuthorName>작가명</AuthorName>
-        <AuthorInput placeholder="작가명을 입력해주세요" />
+        <AuthorInput onChange={props.artistNameChange()} placeholder="작가명을 입력해주세요" />
       </Author>
       <Contact>
         <ContactMeans>연락처</ContactMeans>
-        <ContactInput placeholder="인스타 ID or e-mail or site" />
+        <ContactInput onChange={props.contractChange()} placeholder="인스타 ID or e-mail or site" />
       </Contact>
-      <Next>다음</Next>
+      <Next onClick={props.goStep2()}>다음</Next>
     </Container>
   )
 }
@@ -118,24 +167,34 @@ const SelectCheck = styled.div`
   margin-left: calc(100vw * 1 / 100);
   display: flex;
   align-items: center;
-  cursor: pointer;
 `
-const NotSelectCheck = styled.div`
-  width: 10vw;
-  margin-left: 1.5vh;
-  display: flex;
-  align-items: center;
+const Radio = styled.input`
   cursor: pointer;
+  appearance: none;
+  background-image: url('/public/Nocheck_icon.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: calc(100vw * 1.1 / 100);
+  height: calc(100vw * 1.1 / 100);
+  margin: 0;
+  :checked {
+    position: relative;
+    border-color: #fff;
+    background-image: url('/public/check_icon.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: calc(100vw * 1.1 / 100);
+    height: calc(100vw * 1.1 / 100);
+    margin: 0;
+  }
 `
+
 const Selector = styled.div`
+  position: relative;
   color: #000;
   font-size: calc(100vh * 1.5 / 100);
-  margin-left: 1.2vw;
-`
-const NotSelector = styled.div`
-  color: #676767;
-  font-size: calc(100vh * 1.5 / 100);
-  margin-left: 2vh;
+  top: 0vh;
+  left: 1.2vw;
 `
 
 const Author = styled.div`
@@ -206,4 +265,4 @@ const Next = styled.div`
   background-color: #e9ecf8;
 `
 
-export default RegisterInformation1
+export default RegisterStep1Layout
