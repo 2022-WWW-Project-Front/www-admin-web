@@ -20,8 +20,6 @@ const RegisterStep1 = () => {
   const goStep2 = () => {
     // 변경 값 redux를 통해 저장하기
     if (selectValue != '' && artistName != '' && contact != '') navigate('/RegisterStep2')
-    else if (artistName == '') alert('작가명을 입력해주세요!')
-    else if (contact == '') alert('연락처를 입력해주세요!')
   }
 
   return (
