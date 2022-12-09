@@ -28,7 +28,6 @@ const RegisterStep3 = () => {
   const register = () => {
     // 리덕스로 데이터 다 보내기
     // 이후 사진 따로, 나머지 데이터 등록
-    console.log('등록 끝')
   }
 
   // const deleteFileImage = () => {
