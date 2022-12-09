@@ -65,6 +65,7 @@ const MainSentence = styled.span`
   position: relative;
   display: flex;
   text-align: center;
+  justify-content: center;
   font: calc(100vh * 2.8 / 100) www;
   top: calc(100vh * 13.3 / 100);
 `

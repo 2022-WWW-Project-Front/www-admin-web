@@ -1,7 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const RegisterLeftBarLayout = () => {
+interface props {
+  logout: Function
+}
+
+const RegisterLeftBarLayout = ({ ...props }: props) => {
   return (
     <Container>
       <Logo>
@@ -50,7 +54,7 @@ const RegisterLeftBarLayout = () => {
         STEP2
       </Step2>
       <Step3 style={{ color: location.pathname == '/RegisterStep3' ? '#fff' : '#e9ecf8b2' }}>STEP3</Step3>
-      <Logout>로그아웃</Logout>
+      <Logout onClick={props.logout()}>로그아웃</Logout>
     </Container>
   )
 }

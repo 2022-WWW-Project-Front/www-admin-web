@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import RegisterLeftBarLayout from '@layout/common/RegisterLeftBarLayout'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 interface location {
   hash: string
@@ -12,8 +12,13 @@ interface location {
 
 const RegisterLeftBar = () => {
   const location: location = useLocation()
+  const navigate = useNavigate()
 
-  return <RegisterLeftBarLayout />
+  const logout = () => {
+    navigate('/')
+  }
+
+  return <RegisterLeftBarLayout logout={() => logout} />
 }
 
 export default RegisterLeftBar

@@ -2,7 +2,16 @@ import React from 'react'
 import styled from 'styled-components'
 import Photo from '@layout/common/Photo'
 
-const RegisterStep2Layout = () => {
+interface props {
+  checkContentLength: Function
+  checkIntroduceLength: Function
+  contentLength: number
+  introduceLength: number
+  backStep1: Function
+  goStep3: Function
+}
+
+const RegisterStep2Layout = ({ ...props }: props) => {
   return (
     <Container>
       <Artist>
@@ -26,17 +35,31 @@ const RegisterStep2Layout = () => {
       </Artist>
       <ArtistExplain>
         <AuthorName>작가 설명</AuthorName>
-        <Input placeholder="본인소개를 간단하게 적어주세요" />
+        <Input
+          placeholder="본인소개를 간단하게 적어주세요"
+          onKeyUp={props.checkIntroduceLength()}
+          maxLength={30}
+        />
         <TitleCount>
-          <span>0</span>/30자
+          <span>{props.introduceLength}</span>/30자
         </TitleCount>
-        <TextArea placeholder="본인을 설명할만한 문구, 간단한 약력, 지향하는 디자인 등 자류롭게 적어주세요" />
+        <TextArea
+          placeholder="본인을 설명할만한 문구, 간단한 약력, 지향하는 디자인 등 자류롭게 적어주세요"
+          onKeyUp={props.checkContentLength()}
+          maxLength={900}
+        />
         <TextAreaCount>
-          <span>0</span>/900자
+          <span>{props.contentLength}</span>/900자
         </TextAreaCount>
       </ArtistExplain>
-      <Back>뒤로</Back>
-      <Next>다음</Next>
+      <Back onClick={props.backStep1()}>뒤로</Back>
+      {props.contentLength != 0 && props.introduceLength != 0 ? (
+        <Next style={{ backgroundColor: '#1635F4', cursor: 'pointer' }} onClick={props.goStep3()}>
+          다음
+        </Next>
+      ) : (
+        <Next>다음</Next>
+      )}
     </Container>
   )
 }
@@ -164,6 +187,7 @@ const Back = styled.div`
   font-weight: 500;
   color: #fff;
   background-color: #5b5d6c;
+  cursor: pointer;
 `
 const Next = styled.div`
   position: absolute;
