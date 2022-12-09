@@ -7,8 +7,12 @@ interface props {
   checkIntroduceLength: Function
   contentLength: number
   introduceLength: number
+  photoUpload: Function
   backStep1: Function
   goStep3: Function
+  fileImage: string
+  input: any
+  clickPhotoUpload: Function
 }
 
 const RegisterStep2Layout = ({ ...props }: props) => {
@@ -17,10 +21,32 @@ const RegisterStep2Layout = ({ ...props }: props) => {
       <Artist>
         <ArtistArea>아티스트 사진</ArtistArea>
         <ArtistPhotoAndExplanation>
-          <ArtistPhoto>
-            <Photo />
-            <AddButton>추가</AddButton>
-          </ArtistPhoto>
+          {props.fileImage != '' ? (
+            <ArtistPhoto>
+              <UploadPhoto src={props.fileImage} />
+              <AddButton
+                type="file"
+                accept="image/jpg,impge/png,image/jpeg,image/gif"
+                onChange={props.photoUpload()}
+                id="Edit"
+                ref={props.input}
+              />
+              <Edit onClick={props.clickPhotoUpload()}>변경</Edit>
+            </ArtistPhoto>
+          ) : (
+            <ArtistPhoto>
+              <Photo />
+              <AddButton
+                type="file"
+                accept="image/jpg,impge/png,image/jpeg,image/gif"
+                onChange={props.photoUpload()}
+                id="Add"
+                ref={props.input}
+              />
+              <Add onClick={props.clickPhotoUpload()}>추가</Add>
+            </ArtistPhoto>
+          )}
+
           <Explanation>
             <ExplanationList>권장사이즈 : 500x500 px이상</ExplanationList>
             <ExplanationList>가로세로 정비율 이미지만 등록할 수 있습니다</ExplanationList>
@@ -53,7 +79,7 @@ const RegisterStep2Layout = ({ ...props }: props) => {
         </TextAreaCount>
       </ArtistExplain>
       <Back onClick={props.backStep1()}>뒤로</Back>
-      {props.contentLength != 0 && props.introduceLength != 0 ? (
+      {props.contentLength != 0 && props.introduceLength != 0 && props.fileImage != '' ? (
         <Next style={{ backgroundColor: '#1635F4', cursor: 'pointer' }} onClick={props.goStep3()}>
           다음
         </Next>
@@ -93,7 +119,34 @@ const ArtistPhoto = styled.div`
   cursor: pointer;
 `
 
-const AddButton = styled.div`
+const UploadPhoto = styled.img`
+  position: relative;
+  width: calc(100vh * 18 / 100);
+  height: calc(100vh * 18 / 100);
+  display: flex;
+  background-size: cover;
+  background-repeat: no-repeat;
+  // top: calc(100vh * 2 / 100);
+  flex-direction: column;
+  cursor: pointer;
+`
+const AddButton = styled.input`
+  display: none;
+`
+const Edit = styled.div`
+  position: relative;
+  width: calc(100vh * 6 / 100);
+  background-color: #3d3f4e;
+  border: solid 0.01vh #3d3f4e;
+  color: #fff;
+  font: calc(100vh * 1.5 / 100) Pretendard;
+  font-weight: 700;
+  top: calc(100vh * 3 / 100);
+  left: calc(100vh * 11.2 / 100);
+  padding: calc(100vh * 0.5 / 100) calc(100vh * 0.4 / 100) calc(100vh * 0.5 / 100) calc(100vh * 0.4 / 100);
+  text-align: center;
+`
+const Add = styled.div`
   position: relative;
   width: calc(100vh * 6 / 100);
   background-color: #1635f4;
@@ -101,8 +154,8 @@ const AddButton = styled.div`
   font: calc(100vh * 1.5 / 100) Pretendard;
   font-weight: 700;
   top: calc(100vh * 3 / 100);
-  left: calc(100vh * 10 / 100);
-  padding: calc(100vh * 0.5 / 100) calc(100vh * 1 / 100) calc(100vh * 0.5 / 100) calc(100vh * 1 / 100);
+  left: calc(100vh * 11.2 / 100);
+  padding: calc(100vh * 0.5 / 100) calc(100vh * 0.4 / 100) calc(100vh * 0.5 / 100) calc(100vh * 0.4 / 100);
   text-align: center;
 `
 const Explanation = styled.div`

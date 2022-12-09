@@ -3,7 +3,7 @@ import RegisterStep1Layout from '@layout/register-information/RegisterStep1Layou
 import { useNavigate } from 'react-router-dom'
 
 const RegisterStep1 = () => {
-  const [selectValue, setSelectValue] = useState<string>('시각')
+  const [selectValue, setSelectValue] = useState<string>('visual')
   const [artistName, setArtistName] = useState<string>('')
   const [contact, setContact] = useState<string>('')
   const navigate = useNavigate()

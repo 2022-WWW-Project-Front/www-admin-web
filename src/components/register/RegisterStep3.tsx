@@ -31,6 +31,11 @@ const RegisterStep3 = () => {
     console.log('등록 끝')
   }
 
+  // const deleteFileImage = () => {
+  //   URL.revokeObjectURL(fileImage);
+  //   setFileImage("");
+  // };
+
   return (
     <RegisterStep3Layout
       photoComponent={photoComponent}

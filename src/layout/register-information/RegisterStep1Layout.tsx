@@ -24,11 +24,11 @@ const RegisterStep1Layout = ({ ...props }: props) => {
               <Radio
                 type="radio"
                 name="select"
-                value="시각"
+                value="visual"
                 onClick={props.checkValue()}
-                defaultChecked={props.selectValue === '시각'}
+                defaultChecked={props.selectValue === 'visual'}
               />
-              {props.selectValue === '시각' ? (
+              {props.selectValue === 'visual' ? (
                 <Selector>시각</Selector>
               ) : (
                 <Selector style={{ color: '#676767' }}>시각</Selector>
@@ -41,11 +41,11 @@ const RegisterStep1Layout = ({ ...props }: props) => {
               <Radio
                 type="radio"
                 name="select"
-                value="미디어"
+                value="media"
                 onClick={props.checkValue()}
-                defaultChecked={props.selectValue === '미디어'}
+                defaultChecked={props.selectValue === 'media'}
               />
-              {props.selectValue === '미디어' ? (
+              {props.selectValue === 'media' ? (
                 <Selector>미디어</Selector>
               ) : (
                 <Selector style={{ color: '#676767' }}>미디어</Selector>
@@ -58,11 +58,11 @@ const RegisterStep1Layout = ({ ...props }: props) => {
               <Radio
                 type="radio"
                 name="select"
-                value="리빙"
+                value="living"
                 onClick={props.checkValue()}
-                defaultChecked={props.selectValue === '리빙'}
+                defaultChecked={props.selectValue === 'living'}
               />
-              {props.selectValue === '리빙' ? (
+              {props.selectValue === 'living' ? (
                 <Selector>리빙</Selector>
               ) : (
                 <Selector style={{ color: '#676767' }}>리빙</Selector>
@@ -75,11 +75,11 @@ const RegisterStep1Layout = ({ ...props }: props) => {
               <Radio
                 type="radio"
                 name="select"
-                value="패션"
+                value="fashion"
                 onClick={props.checkValue()}
-                defaultChecked={props.selectValue === '패션'}
+                defaultChecked={props.selectValue === 'fashion'}
               />
-              {props.selectValue === '패션' ? (
+              {props.selectValue === 'fashion' ? (
                 <Selector>패션</Selector>
               ) : (
                 <Selector style={{ color: '#676767' }}>패션</Selector>
