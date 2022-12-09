@@ -7,9 +7,15 @@ import 'swiper/css'
 interface props {
   photoComponent: JSX.Element[]
   addPhoto: Function
+  checkTitleLength: Function
+  titleLength: number
+  checkIntroduceLength: Function
+  introduceLength: number
+  backStep2: Function
+  register: Function
 }
 
-const RegisterStep3Layout = ({ photoComponent, addPhoto }: props) => {
+const RegisterStep3Layout = ({ ...props }: props) => {
   return (
     <Container>
       <Work>
@@ -38,7 +44,7 @@ const RegisterStep3Layout = ({ photoComponent, addPhoto }: props) => {
             }
           }}
         >
-          {photoComponent.map((element, index) => (
+          {props.photoComponent.map((element, index) => (
             <SwiperSlide key={index}>
               <ArtistPhoto>
                 <IndexNumber>{index + 1}</IndexNumber>
@@ -48,7 +54,7 @@ const RegisterStep3Layout = ({ photoComponent, addPhoto }: props) => {
             </SwiperSlide>
           ))}
           <SwiperSlide>
-            <AddPhotoButton onClick={() => addPhoto()}>
+            <AddPhotoButton onClick={() => props.addPhoto()}>
               <svg
                 width="14.4vh"
                 height="14.4vh"
@@ -72,17 +78,27 @@ const RegisterStep3Layout = ({ photoComponent, addPhoto }: props) => {
       </Work>
       <WorkExplain>
         <WorkName>작품 설명</WorkName>
-        <Input placeholder="작품 제목을 입력해주세요" />
+        <Input placeholder="작품 제목을 입력해주세요" maxLength={30} onKeyUp={props.checkTitleLength()} />
         <TitleCount>
-          <span>0</span>/30자
+          <span>{props.titleLength}</span>/30자
         </TitleCount>
-        <TextArea placeholder="작품 설명을 적어주세요" />
+        <TextArea
+          placeholder="작품 설명을 적어주세요"
+          maxLength={900}
+          onKeyUp={props.checkIntroduceLength()}
+        />
         <TextAreaCount>
-          <span>0</span>/900자
+          <span>{props.introduceLength}</span>/900자
         </TextAreaCount>
       </WorkExplain>
-      <Back>뒤로</Back>
-      <Next>등록완료</Next>
+      <Back onClick={props.backStep2()}>뒤로</Back>
+      {props.titleLength != 0 && props.introduceLength != 0 ? (
+        <Next style={{ backgroundColor: '#1635F4', cursor: 'pointer' }} onClick={props.register()}>
+          등록완료
+        </Next>
+      ) : (
+        <Next>등록완료</Next>
+      )}
     </Container>
   )
 }
@@ -222,6 +238,7 @@ const Back = styled.div`
   font-weight: 500;
   color: #fff;
   background-color: #5b5d6c;
+  cursor: pointer;
 `
 const Next = styled.div`
   position: absolute;
