@@ -7,7 +7,6 @@ const RegisterStep2 = () => {
   const [introduceLength, setIntroduceLength] = useState<number>(0)
   const [fileImage, setFileImage] = useState<string>('')
   const [file, setFile] = useState<File>()
-  const input = useRef<HTMLInputElement>(null)
   const navigate = useNavigate()
 
   const checkContentLength = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -16,10 +15,6 @@ const RegisterStep2 = () => {
 
   const checkIntroduceLength = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setIntroduceLength(e.target.value.replace(/<br\s*\/?>/gm, '\n').length)
-  }
-
-  const clickPhotoUpload = () => {
-    input.current!.click()
   }
 
   const photoUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -45,8 +40,6 @@ const RegisterStep2 = () => {
       fileImage={fileImage}
       backStep1={() => backStep1}
       goStep3={() => goStep3}
-      clickPhotoUpload={() => clickPhotoUpload}
-      input={input}
     />
   )
 }

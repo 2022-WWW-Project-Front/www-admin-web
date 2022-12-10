@@ -11,8 +11,6 @@ interface props {
   backStep1: Function
   goStep3: Function
   fileImage: string
-  input: React.RefObject<HTMLInputElement>
-  clickPhotoUpload: Function
 }
 
 const RegisterStep2Layout = ({ ...props }: props) => {
@@ -28,10 +26,9 @@ const RegisterStep2Layout = ({ ...props }: props) => {
                 type="file"
                 accept="image/jpg,impge/png,image/jpeg,image/gif"
                 onChange={props.photoUpload()}
-                id="Edit"
-                ref={props.input}
+                id="AddandEdit"
               />
-              <Edit onClick={props.clickPhotoUpload()}>변경</Edit>
+              <Edit htmlFor="AddandEdit">변경</Edit>
             </ArtistPhoto>
           ) : (
             <ArtistPhoto>
@@ -40,10 +37,9 @@ const RegisterStep2Layout = ({ ...props }: props) => {
                 type="file"
                 accept="image/jpg,impge/png,image/jpeg,image/gif"
                 onChange={props.photoUpload()}
-                id="Add"
-                ref={props.input}
+                id="AddandEdit"
               />
-              <Add onClick={props.clickPhotoUpload()}>추가</Add>
+              <Add htmlFor="AddandEdit">추가</Add>
             </ArtistPhoto>
           )}
 
@@ -126,18 +122,16 @@ const UploadPhoto = styled.img`
   display: flex;
   background-size: cover;
   background-repeat: no-repeat;
-  // top: calc(100vh * 2 / 100);
   flex-direction: column;
   cursor: pointer;
 `
 const AddButton = styled.input`
   display: none;
 `
-const Edit = styled.div`
+const Edit = styled.label`
   position: relative;
   width: calc(100vh * 6 / 100);
   background-color: #3d3f4e;
-  border: solid 0.01vh #3d3f4e;
   color: #fff;
   font: calc(100vh * 1.5 / 100) Pretendard;
   font-weight: 700;
@@ -145,8 +139,9 @@ const Edit = styled.div`
   left: calc(100vh * 11.2 / 100);
   padding: calc(100vh * 0.5 / 100) calc(100vh * 0.4 / 100) calc(100vh * 0.5 / 100) calc(100vh * 0.4 / 100);
   text-align: center;
+  cursor: pointer;
 `
-const Add = styled.div`
+const Add = styled.label`
   position: relative;
   width: calc(100vh * 6 / 100);
   background-color: #1635f4;
@@ -157,6 +152,7 @@ const Add = styled.div`
   left: calc(100vh * 11.2 / 100);
   padding: calc(100vh * 0.5 / 100) calc(100vh * 0.4 / 100) calc(100vh * 0.5 / 100) calc(100vh * 0.4 / 100);
   text-align: center;
+  cursor: pointer;
 `
 const Explanation = styled.div`
   position: relative;
