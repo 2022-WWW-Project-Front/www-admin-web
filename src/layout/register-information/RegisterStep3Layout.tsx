@@ -13,6 +13,13 @@ interface props {
   introduceLength: number
   backStep2: Function
   register: Function
+  fileImage: {
+    id: number
+    url: string
+  }[]
+  photoUpload: Function
+  deleteFileImage: Function
+  // clickPhotoUpload: Function
 }
 
 const RegisterStep3Layout = ({ ...props }: props) => {
@@ -44,17 +51,44 @@ const RegisterStep3Layout = ({ ...props }: props) => {
             }
           }}
         >
-          {props.photoComponent.map((element, index) => (
-            <SwiperSlide key={index}>
-              <ArtistPhoto>
-                <IndexNumber>{index + 1}</IndexNumber>
-                <Photo />
-                <AddButton>추가</AddButton>
-              </ArtistPhoto>
-            </SwiperSlide>
-          ))}
+          {props.photoComponent.map((element, ind) =>
+            props.fileImage[ind].url != '' ? (
+              <SwiperSlide key={ind}>
+                <ArtistPhoto className={String(ind)}>
+                  <IndexNumber>{ind + 1}</IndexNumber>
+                  <UploadPhoto src={props.fileImage[ind].url} />
+                  <AddButton
+                    type="file"
+                    accept="image/jpg,impge/png,image/jpeg,image/gif"
+                    onChange={props.photoUpload()}
+                    id={String(ind)}
+                  />
+                  <ButtonBundle>
+                    <Delete onClick={props.deleteFileImage()} id={String(ind)}>
+                      삭제
+                    </Delete>
+                    <Edit htmlFor={String(ind)}>변경</Edit>
+                  </ButtonBundle>
+                </ArtistPhoto>
+              </SwiperSlide>
+            ) : (
+              <SwiperSlide key={ind}>
+                <ArtistPhoto className={String(ind)}>
+                  <IndexNumber>{ind + 1}</IndexNumber>
+                  <Photo />
+                  <AddButton
+                    type="file"
+                    accept="image/jpg,impge/png,image/jpeg,image/gif"
+                    onChange={props.photoUpload()}
+                    id={String(ind)}
+                  />
+                  <Add htmlFor={String(ind)}>추가</Add>
+                </ArtistPhoto>
+              </SwiperSlide>
+            )
+          )}
           <SwiperSlide>
-            <AddPhotoButton onClick={() => props.addPhoto()}>
+            <AddPhotoButton onClick={props.addPhoto()}>
               <svg
                 width="14.4vh"
                 height="14.4vh"
@@ -92,7 +126,7 @@ const RegisterStep3Layout = ({ ...props }: props) => {
         </TextAreaCount>
       </WorkExplain>
       <Back onClick={props.backStep2()}>뒤로</Back>
-      {props.titleLength != 0 && props.introduceLength != 0 ? (
+      {props.titleLength != 0 && props.introduceLength != 0 && props.fileImage[0].url != '' ? (
         <Next style={{ backgroundColor: '#1635F4', cursor: 'pointer' }} onClick={props.register()}>
           등록완료
         </Next>
@@ -129,6 +163,7 @@ const ArtistPhoto = styled.div`
 `
 const IndexNumber = styled.div`
   position: absolute;
+  z-index: 2;
   padding: calc(100vh * 0.8 / 100);
   background-color: #fff;
 `
@@ -136,6 +171,7 @@ const IndexNumber = styled.div`
 const AddPhotoButton = styled.div`
   position: relative;
   top: calc(100vh * 6.2 / 100);
+  cursor: pointer;
 `
 const AddExplain = styled.div`
   position: relative;
@@ -152,19 +188,63 @@ const ExplanationList = styled.li`
   width: 13vw;
   list-style: inside;
 `
-
-const AddButton = styled.div`
+const UploadPhoto = styled.img`
+  position: relative;
+  width: calc(100vh * 18 / 100);
+  height: calc(100vh * 18 / 100);
+  display: flex;
+  background-size: cover;
+  background-repeat: no-repeat;
+  // top: calc(100vh * 2 / 100);
+  flex-direction: column;
+  cursor: pointer;
+`
+const AddButton = styled.input`
+  display: none;
+`
+const Add = styled.label`
   position: relative;
   width: calc(100vh * 6 / 100);
-  height: 7vh;
   background-color: #1635f4;
   color: #fff;
   font: calc(100vh * 1.5 / 100) Pretendard;
   font-weight: 700;
   top: calc(100vh * 3 / 100);
-  left: calc(100vh * 10 / 100);
-  padding: calc(100vh * 0.5 / 100) calc(100vh * 1 / 100) calc(100vh * 0.5 / 100) calc(100vh * 1 / 100);
+  left: calc(100vh * 11.2 / 100);
+  padding: calc(100vh * 0.5 / 100) calc(100vh * 0.4 / 100) calc(100vh * 0.5 / 100) calc(100vh * 0.4 / 100);
   text-align: center;
+  cursor: pointer;
+`
+const ButtonBundle = styled.div`
+  display: flex;
+`
+const Delete = styled.div`
+  position: relative;
+  width: calc(100vh * 6 / 100);
+  background-color: #fff;
+  border: solid 0.01vh #3d3f4e;
+  color: #3d3f4e;
+  font: calc(100vh * 1.5 / 100) Pretendard;
+  font-weight: 700;
+  top: calc(100vh * 3 / 100);
+  left: calc(100vh * 3.2 / 100);
+  padding: calc(100vh * 0.5 / 100) calc(100vh * 0.4 / 100) calc(100vh * 0.5 / 100) calc(100vh * 0.4 / 100);
+  text-align: center;
+  cursor: pointer;
+`
+const Edit = styled.label`
+  position: relative;
+  width: calc(100vh * 6 / 100);
+  background-color: #3d3f4e;
+  border: solid 0.01vh #3d3f4e;
+  color: #fff;
+  font: calc(100vh * 1.5 / 100) Pretendard;
+  font-weight: 700;
+  top: calc(100vh * 3 / 100);
+  left: calc(100vh * 4 / 100);
+  padding: calc(100vh * 0.5 / 100) calc(100vh * 0.4 / 100) calc(100vh * 0.5 / 100) calc(100vh * 0.4 / 100);
+  text-align: center;
+  cursor: pointer;
 `
 
 const WorkExplain = styled.div`

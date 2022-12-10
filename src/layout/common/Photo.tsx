@@ -29,15 +29,7 @@ const Photo = () => {
       ) : (
         <PhotoSize>
           <svg width="6vh" height="6vh" viewBox="0 0 60 61" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <mask
-              id="mask0_371_3354"
-              // style="mask-type:alpha"
-              maskUnits="userSpaceOnUse"
-              x="9"
-              y="12"
-              width="41"
-              height="41"
-            >
+            <mask id="mask0_371_3354" maskUnits="userSpaceOnUse" x="9" y="12" width="41" height="41">
               <path d="M9.16211 12.6621H49.8378V52.1756H9.16211V12.6621Z" fill="#D9D9D9" />
             </mask>
             <g mask="url(#mask0_371_3354)">

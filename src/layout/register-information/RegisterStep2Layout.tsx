@@ -11,7 +11,7 @@ interface props {
   backStep1: Function
   goStep3: Function
   fileImage: string
-  input: any
+  input: React.RefObject<HTMLInputElement>
   clickPhotoUpload: Function
 }
 
