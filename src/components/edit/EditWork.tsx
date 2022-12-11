@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import RegisterStep3Layout from '@layout/register-information/RegisterStep3Layout'
+import EditWorkLayout from '@layout/edit-information/EditWorkLayout'
 import Photo from '@layout/common/Photo'
 import { useNavigate } from 'react-router-dom'
 import Modal from '@components/modal/Modal'
 
-const RegisterStep3 = () => {
+const EditWork = () => {
   const [photoComponent, setPhotoComponenet] = useState<JSX.Element[]>([<Photo />])
   const [titleLength, setTitleLength] = useState<number>(0)
   const [introduceLength, setIntroduceLength] = useState<number>(0)
@@ -48,10 +48,6 @@ const RegisterStep3 = () => {
     setFileImage(alertFileImage)
   }
 
-  const backStep2 = () => {
-    navigate('/RegisterStep2')
-  }
-
   const register = () => {
     if (titleLength !== 0 && introduceLength !== 0 && alertFileImage[0].url !== '') {
       // modal창 나오게 작업
@@ -65,17 +61,15 @@ const RegisterStep3 = () => {
     setTimerModalIsOpen(!timerModalIsOpen)
     navigate('/EditInformation')
   }
-
   return (
     <>
-      <RegisterStep3Layout
+      <EditWorkLayout
         photoComponent={photoComponent}
         addPhoto={() => addPhoto}
         checkTitleLength={() => checkTitleLength}
         titleLength={titleLength}
         checkIntroduceLength={() => checkIntroduceLength}
         introduceLength={introduceLength}
-        backStep2={() => backStep2}
         register={() => register}
         fileImage={fileImage}
         photoUpload={() => photoUpload}
@@ -86,4 +80,4 @@ const RegisterStep3 = () => {
   )
 }
 
-export default RegisterStep3
+export default EditWork

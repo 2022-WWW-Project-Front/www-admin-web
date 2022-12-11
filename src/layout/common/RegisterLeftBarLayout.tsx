@@ -71,7 +71,7 @@ const Logo = styled.div`
 `
 const Step1 = styled.div`
   position: relative;
-  top: calc(100vh * 55 / 100);
+  top: calc(100vh * 53 / 100);
   left: calc(100vw * 3 / 100);
   font: calc(100vh * 3 / 100) Pretendard;
   font-weight: 700;
@@ -85,7 +85,7 @@ const Step2 = styled.div`
 `
 const Step3 = styled.div`
   position: relative;
-  top: calc(100vh * 65 / 100);
+  top: calc(100vh * 67 / 100);
   left: calc(100vw * 3 / 100);
   font: calc(100vh * 3 / 100) Pretendard;
   font-weight: 700;

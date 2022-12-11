@@ -1,4 +1,5 @@
 import React from 'react'
+
 import styled from 'styled-components'
 
 interface props {
@@ -11,7 +12,7 @@ interface props {
   contact?: string
 }
 
-const RegisterStep1Layout = ({ ...props }: props) => {
+const EditGenreAuthorLayout = ({ ...props }: props) => {
   return (
     <Container>
       <Genre>
@@ -95,13 +96,7 @@ const RegisterStep1Layout = ({ ...props }: props) => {
         <ContactMeans>연락처</ContactMeans>
         <ContactInput onChange={props.contractChange()} placeholder="인스타 ID or e-mail or site" />
       </Contact>
-      {props.artistName !== '' && props.contact !== '' ? (
-        <Next style={{ backgroundColor: '#1635F4', cursor: 'pointer' }} onClick={props.goStep2()}>
-          다음
-        </Next>
-      ) : (
-        <Next>다음</Next>
-      )}
+      <Next>저장</Next>
     </Container>
   )
 }
@@ -185,7 +180,7 @@ const Radio = styled.input`
   :checked {
     position: relative;
     border-color: #fff;
-    background-image: url('/public/check_icon.png');
+    background-image: url('/public/Edit_Check.png');
     background-size: cover;
     background-repeat: no-repeat;
     width: calc(100vw * 1.1 / 100);
@@ -266,8 +261,9 @@ const Next = styled.div`
   padding: calc(100vh * 1.2 / 100) 0 calc(100vh * 1.2 / 100) calc(100vw * 1.1 / 100);
   font: calc(100vh * 2.4 / 100) Pretendard;
   font-weight: 500;
+  background-color: #000;
   color: #fff;
-  background-color: #e9ecf8;
+  cursor: pointer;
 `
 
-export default RegisterStep1Layout
+export default EditGenreAuthorLayout
