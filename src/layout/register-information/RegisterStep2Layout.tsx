@@ -19,7 +19,7 @@ const RegisterStep2Layout = ({ ...props }: props) => {
       <Artist>
         <ArtistArea>아티스트 사진</ArtistArea>
         <ArtistPhotoAndExplanation>
-          {props.fileImage != '' ? (
+          {props.fileImage !== '' ? (
             <ArtistPhoto>
               <UploadPhoto src={props.fileImage} />
               <AddButton
@@ -75,7 +75,7 @@ const RegisterStep2Layout = ({ ...props }: props) => {
         </TextAreaCount>
       </ArtistExplain>
       <Back onClick={props.backStep1()}>뒤로</Back>
-      {props.contentLength != 0 && props.introduceLength != 0 && props.fileImage != '' ? (
+      {props.contentLength !== 0 && props.introduceLength !== 0 && props.fileImage !== '' ? (
         <Next style={{ backgroundColor: '#1635F4', cursor: 'pointer' }} onClick={props.goStep3()}>
           다음
         </Next>

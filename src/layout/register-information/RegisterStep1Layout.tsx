@@ -96,7 +96,7 @@ const RegisterStep1Layout = ({ ...props }: props) => {
         <ContactMeans>연락처</ContactMeans>
         <ContactInput onChange={props.contractChange()} placeholder="인스타 ID or e-mail or site" />
       </Contact>
-      {props.artistName != '' && props.contact != '' ? (
+      {props.artistName !== '' && props.contact !== '' ? (
         <Next style={{ backgroundColor: '#1635F4', cursor: 'pointer' }} onClick={props.goStep2()}>
           다음
         </Next>

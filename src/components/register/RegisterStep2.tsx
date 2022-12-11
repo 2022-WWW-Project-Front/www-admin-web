@@ -27,7 +27,7 @@ const RegisterStep2 = () => {
 
   const goStep3 = () => {
     // 변경 값 redux를 통해 저장하기
-    if (contentLength != 0 && introduceLength != 0 && fileImage != '') navigate('/RegisterStep3')
+    if (contentLength !== 0 && introduceLength !== 0 && fileImage !== '') navigate('/RegisterStep3')
   }
 
   return (

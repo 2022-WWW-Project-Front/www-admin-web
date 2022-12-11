@@ -1,7 +1,8 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import RegisterStep3Layout from '@layout/register-information/RegisterStep3Layout'
 import Photo from '@layout/common/Photo'
 import { useNavigate } from 'react-router-dom'
+import Modal from '@components/modal/Modal'
 
 const RegisterStep3 = () => {
   const [photoComponent, setPhotoComponenet] = useState<JSX.Element[]>([<Photo />])
@@ -20,7 +21,8 @@ const RegisterStep3 = () => {
     url: string
   }[] = [...fileImage]
   const navigate = useNavigate()
-  console.log()
+  const [timerModalIsOpen, setTimerModalIsOpen] = useState<boolean>(false)
+
   const addPhoto = () => {
     setIndex(index + 1)
     setPhotoComponenet([...photoComponent, <Photo />])
@@ -51,28 +53,36 @@ const RegisterStep3 = () => {
   }
 
   const register = () => {
-    if (titleLength != 0 && introduceLength != 0 && alertFileImage[0].url != '') {
+    if (titleLength !== 0 && introduceLength !== 0 && alertFileImage[0].url !== '') {
       // modal창 나오게 작업
-      console.log('modal')
+      setTimerModalIsOpen(!timerModalIsOpen)
     }
     // 리덕스로 데이터 다 보내기
     // 이후 사진 따로, 나머지 데이터 등록
   }
+
+  const modalClose = () => {
+    setTimerModalIsOpen(!timerModalIsOpen)
+    navigate('/EditInformation')
+  }
+
   return (
-    <RegisterStep3Layout
-      photoComponent={photoComponent}
-      addPhoto={() => addPhoto}
-      checkTitleLength={() => checkTitleLength}
-      titleLength={titleLength}
-      checkIntroduceLength={() => checkIntroduceLength}
-      introduceLength={introduceLength}
-      backStep2={() => backStep2}
-      register={() => register}
-      fileImage={fileImage}
-      photoUpload={() => photoUpload}
-      deleteFileImage={() => deleteFileImage}
-      // clickPhotoUpload={() => clickPhotoUpload}
-    />
+    <>
+      <RegisterStep3Layout
+        photoComponent={photoComponent}
+        addPhoto={() => addPhoto}
+        checkTitleLength={() => checkTitleLength}
+        titleLength={titleLength}
+        checkIntroduceLength={() => checkIntroduceLength}
+        introduceLength={introduceLength}
+        backStep2={() => backStep2}
+        register={() => register}
+        fileImage={fileImage}
+        photoUpload={() => photoUpload}
+        deleteFileImage={() => deleteFileImage}
+      />
+      {timerModalIsOpen && <Modal modalClose={() => modalClose} />}
+    </>
   )
 }
 

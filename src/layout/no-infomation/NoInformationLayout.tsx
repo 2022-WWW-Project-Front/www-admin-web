@@ -5,7 +5,7 @@ interface props {
   goRegister: Function
 }
 
-const NoInformationLayout = ({ ...props }) => {
+const NoInformationLayout = ({ ...props }: props) => {
   return (
     <Background>
       <Logo>

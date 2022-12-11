@@ -19,7 +19,6 @@ interface props {
   }[]
   photoUpload: Function
   deleteFileImage: Function
-  // clickPhotoUpload: Function
 }
 
 const RegisterStep3Layout = ({ ...props }: props) => {
@@ -52,7 +51,7 @@ const RegisterStep3Layout = ({ ...props }: props) => {
           }}
         >
           {props.photoComponent.map((element, ind) =>
-            props.fileImage[ind].url != '' ? (
+            props.fileImage[ind].url !== '' ? (
               <SwiperSlide key={ind}>
                 <ArtistPhoto className={String(ind)}>
                   <IndexNumber>{ind + 1}</IndexNumber>
@@ -126,7 +125,7 @@ const RegisterStep3Layout = ({ ...props }: props) => {
         </TextAreaCount>
       </WorkExplain>
       <Back onClick={props.backStep2()}>뒤로</Back>
-      {props.titleLength != 0 && props.introduceLength != 0 && props.fileImage[0].url != '' ? (
+      {props.titleLength !== 0 && props.introduceLength !== 0 && props.fileImage[0].url !== '' ? (
         <Next style={{ backgroundColor: '#1635F4', cursor: 'pointer' }} onClick={props.register()}>
           등록완료
         </Next>
