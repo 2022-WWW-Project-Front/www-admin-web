@@ -5,7 +5,9 @@ import NoInformation from './pages/NoInformation'
 import RegisterStep1 from './pages/RegisterInformation/RegisterStep1'
 import RegisterStep2 from './pages/RegisterInformation/RegisterStep2'
 import RegisterStep3 from './pages/RegisterInformation/RegisterStep3'
-import EditInformation from './pages/EditInformation'
+import EditGenreAuthor from './pages/EditInformation/EditGenreAuthor'
+import EditArtist from './pages/EditInformation/EditArtist'
+import EditWork from './pages/EditInformation/EditWork'
 import './index.css'
 
 const App = () => {
@@ -17,7 +19,9 @@ const App = () => {
         <Route path="/RegisterStep1" element={<RegisterStep1 />} />
         <Route path="/RegisterStep2" element={<RegisterStep2 />} />
         <Route path="/RegisterStep3" element={<RegisterStep3 />} />
-        <Route path="/EditInformation" element={<EditInformation />} />
+        <Route path="/EditGenreAuthor" element={<EditGenreAuthor />} />
+        <Route path="/EditArtist" element={<EditArtist />} />
+        <Route path="/EditWork" element={<EditWork />} />
       </Routes>
     </BrowserRouter>
   )

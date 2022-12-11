@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import RegisterLeftBarLayout from '@layout/common/RegisterLeftBarLayout'
 import { useLocation, useNavigate } from 'react-router-dom'
 
