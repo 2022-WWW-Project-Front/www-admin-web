@@ -1,7 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const RegisterLeftBar = () => {
+interface props {
+  logout: Function
+}
+
+const RegisterLeftBarLayout = ({ ...props }: props) => {
   return (
     <Container>
       <Logo>
@@ -27,10 +31,30 @@ const RegisterLeftBar = () => {
           <path d="M198.848 53.6055H168.957V69.933H198.848V53.6055Z" fill="white" />
         </svg>
       </Logo>
-      <Step1>STEP1</Step1>
-      <Step2>STEP2</Step2>
-      <Step3>STEP3</Step3>
-      <Logout>로그아웃</Logout>
+      <Step1
+        style={{
+          color:
+            location.pathname == '/RegisterStep1' ||
+            location.pathname == '/RegisterStep2' ||
+            location.pathname == '/RegisterStep3'
+              ? '#fff'
+              : '#e9ecf8b2'
+        }}
+      >
+        STEP1
+      </Step1>
+      <Step2
+        style={{
+          color:
+            location.pathname == '/RegisterStep2' || location.pathname == '/RegisterStep3'
+              ? '#fff'
+              : '#e9ecf8b2'
+        }}
+      >
+        STEP2
+      </Step2>
+      <Step3 style={{ color: location.pathname == '/RegisterStep3' ? '#fff' : '#e9ecf8b2' }}>STEP3</Step3>
+      <Logout onClick={props.logout()}>로그아웃</Logout>
     </Container>
   )
 }
@@ -51,7 +75,6 @@ const Step1 = styled.div`
   left: calc(100vw * 3 / 100);
   font: calc(100vh * 3 / 100) Pretendard;
   font-weight: 700;
-  color: #fff;
 `
 const Step2 = styled.div`
   position: relative;
@@ -59,7 +82,6 @@ const Step2 = styled.div`
   left: calc(100vw * 3 / 100);
   font: calc(100vh * 3 / 100) Pretendard;
   font-weight: 700;
-  color: #e9ecf8b2;
 `
 const Step3 = styled.div`
   position: relative;
@@ -67,7 +89,6 @@ const Step3 = styled.div`
   left: calc(100vw * 3 / 100);
   font: calc(100vh * 3 / 100) Pretendard;
   font-weight: 700;
-  color: #e9ecf8b2;
 `
 const Logout = styled.div`
   position: relative;
@@ -79,4 +100,4 @@ const Logout = styled.div`
   cursor: pointer;
 `
 
-export default RegisterLeftBar
+export default RegisterLeftBarLayout

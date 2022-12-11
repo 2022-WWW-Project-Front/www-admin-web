@@ -1,8 +1,8 @@
 import React from 'react'
-import NoInformationLayout from '@layout/no-infomation/NoInformation'
+import NoInformationComponent from '@components/no-information/NoInformation'
 
 const NoInformation = () => {
-  return <NoInformationLayout />
+  return <NoInformationComponent />
 }
 
 export default NoInformation

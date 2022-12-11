@@ -31,3 +31,6 @@
   /* min-height: 721px; */
   /* max-height: 1536px; */
 }
+.swiper {
+  height: 26vh !important;
+}

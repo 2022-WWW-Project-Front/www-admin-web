@@ -1,8 +1,8 @@
 import React from 'react'
-import SigninLayout from '@layout/signin/Signin'
+import SigninComponent from '@components/signin/Singin'
 
 const Signin = () => {
-  return <SigninLayout />
+  return <SigninComponent />
 }
 
 export default Signin

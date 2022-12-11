@@ -1,31 +1,48 @@
 import React from 'react'
 import styled from 'styled-components'
+import Photo from '@layout/common/Photo'
 
-const RegisterInformation2 = () => {
+interface props {
+  checkContentLength: Function
+  checkIntroduceLength: Function
+  contentLength: number
+  introduceLength: number
+  photoUpload: Function
+  backStep1: Function
+  goStep3: Function
+  fileImage: string
+}
+
+const RegisterStep2Layout = ({ ...props }: props) => {
   return (
     <Container>
       <Artist>
         <ArtistArea>아티스트 사진</ArtistArea>
         <ArtistPhotoAndExplanation>
-          <ArtistPhoto>
-            <Photo>
-              <svg
-                width="6vh"
-                height="6vh"
-                viewBox="0 0 60 60"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fillRule="evenodd"
-                  clipRule="evenodd"
-                  d="M55 47C55 49.7615 52.7615 52 50 52H10C7.23857 52 5 49.7615 5 47V21C5 18.2386 7.23857 16 10 16H17.5L23.75 7H36.25L42.5 16H50C52.7615 16 55 18.2386 55 21V47ZM22 32.5C22 28.0817 25.5817 24.5 30 24.5C34.4183 24.5 38 28.0817 38 32.5C38 36.9183 34.4183 40.5 30 40.5C25.5817 40.5 22 36.9183 22 32.5ZM30 20.5C23.3726 20.5 18 25.8726 18 32.5C18 39.1274 23.3726 44.5 30 44.5C36.6274 44.5 42 39.1274 42 32.5C42 25.8726 36.6274 20.5 30 20.5Z"
-                  fill="#1635F4"
-                />
-              </svg>
-            </Photo>
-            <AddButton>추가</AddButton>
-          </ArtistPhoto>
+          {props.fileImage !== '' ? (
+            <ArtistPhoto>
+              <UploadPhoto src={props.fileImage} />
+              <AddButton
+                type="file"
+                accept="image/jpg,impge/png,image/jpeg,image/gif"
+                onChange={props.photoUpload()}
+                id="AddandEdit"
+              />
+              <Edit htmlFor="AddandEdit">변경</Edit>
+            </ArtistPhoto>
+          ) : (
+            <ArtistPhoto>
+              <Photo />
+              <AddButton
+                type="file"
+                accept="image/jpg,impge/png,image/jpeg,image/gif"
+                onChange={props.photoUpload()}
+                id="AddandEdit"
+              />
+              <Add htmlFor="AddandEdit">추가</Add>
+            </ArtistPhoto>
+          )}
+
           <Explanation>
             <ExplanationList>권장사이즈 : 500x500 px이상</ExplanationList>
             <ExplanationList>가로세로 정비율 이미지만 등록할 수 있습니다</ExplanationList>
@@ -40,17 +57,31 @@ const RegisterInformation2 = () => {
       </Artist>
       <ArtistExplain>
         <AuthorName>작가 설명</AuthorName>
-        <Input placeholder="본인소개를 간단하게 적어주세요" />
+        <Input
+          placeholder="본인소개를 간단하게 적어주세요"
+          onKeyUp={props.checkIntroduceLength()}
+          maxLength={30}
+        />
         <TitleCount>
-          <span>0</span>/30자
+          <span>{props.introduceLength}</span>/30자
         </TitleCount>
-        <TextArea placeholder="본인을 설명할만한 문구, 간단한 약력, 지향하는 디자인 등 자류롭게 적어주세요" />
+        <TextArea
+          placeholder="본인을 설명할만한 문구, 간단한 약력, 지향하는 디자인 등 자류롭게 적어주세요"
+          onKeyUp={props.checkContentLength()}
+          maxLength={900}
+        />
         <TextAreaCount>
-          <span>0</span>/900자
+          <span>{props.contentLength}</span>/900자
         </TextAreaCount>
       </ArtistExplain>
-      <Back>뒤로</Back>
-      <Next>다음</Next>
+      <Back onClick={props.backStep1()}>뒤로</Back>
+      {props.contentLength !== 0 && props.introduceLength !== 0 && props.fileImage !== '' ? (
+        <Next style={{ backgroundColor: '#1635F4', cursor: 'pointer' }} onClick={props.goStep3()}>
+          다음
+        </Next>
+      ) : (
+        <Next>다음</Next>
+      )}
     </Container>
   )
 }
@@ -84,15 +115,33 @@ const ArtistPhoto = styled.div`
   cursor: pointer;
 `
 
-const Photo = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+const UploadPhoto = styled.img`
+  position: relative;
   width: calc(100vh * 18 / 100);
   height: calc(100vh * 18 / 100);
-  background-color: #e9ecf8;
+  display: flex;
+  background-size: cover;
+  background-repeat: no-repeat;
+  flex-direction: column;
+  cursor: pointer;
 `
-const AddButton = styled.div`
+const AddButton = styled.input`
+  display: none;
+`
+const Edit = styled.label`
+  position: relative;
+  width: calc(100vh * 6 / 100);
+  background-color: #3d3f4e;
+  color: #fff;
+  font: calc(100vh * 1.5 / 100) Pretendard;
+  font-weight: 700;
+  top: calc(100vh * 3 / 100);
+  left: calc(100vh * 11.2 / 100);
+  padding: calc(100vh * 0.5 / 100) calc(100vh * 0.4 / 100) calc(100vh * 0.5 / 100) calc(100vh * 0.4 / 100);
+  text-align: center;
+  cursor: pointer;
+`
+const Add = styled.label`
   position: relative;
   width: calc(100vh * 6 / 100);
   background-color: #1635f4;
@@ -100,9 +149,10 @@ const AddButton = styled.div`
   font: calc(100vh * 1.5 / 100) Pretendard;
   font-weight: 700;
   top: calc(100vh * 3 / 100);
-  left: calc(100vh * 10 / 100);
-  padding: calc(100vh * 0.5 / 100) calc(100vh * 1 / 100) calc(100vh * 0.5 / 100) calc(100vh * 1 / 100);
+  left: calc(100vh * 11.2 / 100);
+  padding: calc(100vh * 0.5 / 100) calc(100vh * 0.4 / 100) calc(100vh * 0.5 / 100) calc(100vh * 0.4 / 100);
   text-align: center;
+  cursor: pointer;
 `
 const Explanation = styled.div`
   position: relative;
@@ -186,6 +236,7 @@ const Back = styled.div`
   font-weight: 500;
   color: #fff;
   background-color: #5b5d6c;
+  cursor: pointer;
 `
 const Next = styled.div`
   position: absolute;
@@ -199,4 +250,4 @@ const Next = styled.div`
   background-color: #e9ecf8;
 `
 
-export default RegisterInformation2
+export default RegisterStep2Layout

@@ -1,7 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const Signin = () => {
+interface props {
+  login: Function
+  checkArtistCode: Function
+}
+
+const SigninLayout = ({ login, checkArtistCode }: props) => {
   return (
     <Background>
       <Logo>
@@ -33,7 +38,7 @@ const Signin = () => {
           <pre>LOG-IN</pre>
         </Sentence>
         <InputBundle>
-          <Input type="text" placeholder="작가코드입력" />
+          <Input type="text" placeholder="작가코드입력" onChange={checkArtistCode()} onKeyPress={login()} />
           <Icon>
             <svg
               width="calc(100vw * 1.5 / 100)"
@@ -59,7 +64,7 @@ const Signin = () => {
             </svg>
           </Icon>
         </InputBundle>
-        <Button>로그인</Button>
+        <Button onClick={login()}>로그인</Button>
       </Container>
     </Background>
   )
@@ -130,4 +135,4 @@ const Button = styled.div`
   cursor: pointer;
 `
 
-export default Signin
+export default SigninLayout
