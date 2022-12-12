@@ -3,6 +3,8 @@ import RegisterStep3Layout from '@layout/register-information/RegisterStep3Layou
 import Photo from '@layout/common/Photo'
 import { useNavigate } from 'react-router-dom'
 import Modal from '@components/modal/Modal'
+import { useDispatch } from 'react-redux'
+import { step3, reset } from '@stores/step3Slice'
 
 const RegisterStep3 = () => {
   const [photoComponent, setPhotoComponenet] = useState<JSX.Element[]>([<Photo />])
@@ -22,6 +24,9 @@ const RegisterStep3 = () => {
   }[] = [...fileImage]
   const navigate = useNavigate()
   const [timerModalIsOpen, setTimerModalIsOpen] = useState<boolean>(false)
+  const [workName, setWorkName] = useState<string>('')
+  const [workExplain, setWorkExplain] = useState<string>('')
+  const dispatch = useDispatch()
 
   const addPhoto = () => {
     setIndex(index + 1)
@@ -30,11 +35,13 @@ const RegisterStep3 = () => {
   }
 
   const checkTitleLength = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setTitleLength(e.target.value.replace(/<br\s*\/?>/gm, '\n').length)
+    setTitleLength(e.target.value.replace(/<br\s*\/?>/gm, '\n').trim().length)
+    setWorkName(e.target.value.trim())
   }
 
   const checkIntroduceLength = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setIntroduceLength(e.target.value.replace(/<br\s*\/?>/gm, '\n').length)
+    setIntroduceLength(e.target.value.replace(/<br\s*\/?>/gm, '\n').trim().length)
+    setWorkExplain(e.target.value.trim())
   }
 
   const photoUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -53,17 +60,22 @@ const RegisterStep3 = () => {
   }
 
   const register = () => {
-    if (titleLength !== 0 && introduceLength !== 0 && alertFileImage[0].url !== '') {
-      // modal창 나오게 작업
+    if (workName.length !== 0 && workExplain.length !== 0 && alertFileImage[0].url !== '') {
+      dispatch(reset())
+      dispatch(
+        step3({
+          assets: alertFileImage,
+          workName: workName,
+          workExplain: workExplain
+        })
+      )
       setTimerModalIsOpen(!timerModalIsOpen)
     }
-    // 리덕스로 데이터 다 보내기
-    // 이후 사진 따로, 나머지 데이터 등록
   }
 
   const modalClose = () => {
     setTimerModalIsOpen(!timerModalIsOpen)
-    navigate('/EditInformation')
+    navigate('/EditGenreAuthor')
   }
 
   return (
