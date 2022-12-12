@@ -1,20 +1,27 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import RegisterStep2Layout from '@layout/register-information/RegisterStep2Layout'
 import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { step2, reset } from '@stores/step2Slice'
 
 const RegisterStep2 = () => {
   const [contentLength, setContentLength] = useState<number>(0)
   const [introduceLength, setIntroduceLength] = useState<number>(0)
+  const [bio, setBio] = useState<string>('')
+  const [description, setDescription] = useState<string>('')
   const [fileImage, setFileImage] = useState<string>('')
   const [file, setFile] = useState<File>()
   const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   const checkContentLength = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setContentLength(e.target.value.replace(/<br\s*\/?>/gm, '\n').length)
+    setContentLength(e.target.value.replace(/<br\s*\/?>/gm, '\n').trim().length)
+    setBio(e.target.value.trim())
   }
 
   const checkIntroduceLength = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setIntroduceLength(e.target.value.replace(/<br\s*\/?>/gm, '\n').length)
+    setIntroduceLength(e.target.value.replace(/<br\s*\/?>/gm, '\n').trim().length)
+    setDescription(e.target.value.trim())
   }
 
   const photoUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -26,8 +33,17 @@ const RegisterStep2 = () => {
   }
 
   const goStep3 = () => {
-    // 변경 값 redux를 통해 저장하기
-    if (contentLength !== 0 && introduceLength !== 0 && fileImage !== '') navigate('/RegisterStep3')
+    if (bio.length !== 0 && description.length !== 0 && fileImage !== '') {
+      dispatch(reset())
+      dispatch(
+        step2({
+          profile: fileImage,
+          bio: bio,
+          description: description
+        })
+      )
+      navigate('/RegisterStep3')
+    }
   }
 
   return (
