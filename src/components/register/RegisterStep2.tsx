@@ -26,6 +26,7 @@ const RegisterStep2 = () => {
 
   const photoUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFileImage(URL.createObjectURL(e.target.files![0]))
+    setFile(e.target.files![0])
   }
 
   const backStep1 = () => {
@@ -37,7 +38,7 @@ const RegisterStep2 = () => {
       dispatch(reset())
       dispatch(
         step2({
-          profile: fileImage,
+          profile: file,
           bio: bio,
           description: description
         })

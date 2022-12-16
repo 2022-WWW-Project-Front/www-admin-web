@@ -7,7 +7,8 @@ import { step1, reset } from '@stores/step1Slice'
 const RegisterStep1 = () => {
   const [selectValue, setSelectValue] = useState<string>('visual')
   const [artistName, setArtistName] = useState<string>('')
-  const [contact, setContact] = useState<string>('')
+  const [email, setEmail] = useState<string>('')
+  const [linkTree, setLinkTree] = useState<string>('')
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
@@ -17,17 +18,21 @@ const RegisterStep1 = () => {
   const artistNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setArtistName(e.target.value.trim())
   }
-  const contractChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setContact(e.target.value.trim())
+  const emailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value.trim())
+  }
+  const linkTreeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setLinkTree(e.target.value.trim())
   }
   const goStep2 = () => {
-    if (selectValue !== '' && artistName !== '' && contact !== '') {
+    if (selectValue !== '' && artistName !== '' && email !== '') {
       dispatch(reset())
       dispatch(
         step1({
           genre: selectValue,
-          name: artistName,
-          concat: contact
+          nickname: artistName,
+          email: email,
+          linkTree: linkTree
         })
       )
       navigate('/RegisterStep2')
@@ -38,11 +43,13 @@ const RegisterStep1 = () => {
     <RegisterStep1Layout
       checkValue={() => checkValue}
       artistNameChange={() => artistNameChange}
-      contractChange={() => contractChange}
+      emailChange={() => emailChange}
+      linkTreeChange={() => linkTreeChange}
       goStep2={() => goStep2}
       selectValue={selectValue}
       artistName={artistName}
-      contact={contact}
+      email={email}
+      linkTree={linkTree}
     />
   )
 }

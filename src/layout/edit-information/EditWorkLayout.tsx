@@ -11,13 +11,22 @@ interface props {
   titleLength: number
   checkIntroduceLength: Function
   introduceLength: number
-  register: Function
-  fileImage: {
+  filesImage: {
     id: number
     url: string
   }[]
+  fileImage: string
   photoUpload: Function
   deleteFileImage: Function
+  updateInfo: Function
+  title: string
+  description: string
+  getAssets: {
+    genre: string
+    isMain: boolean
+    type: string
+    url: string
+  }[]
 }
 
 const EditWorkLayout = ({ ...props }: props) => {
@@ -49,18 +58,13 @@ const EditWorkLayout = ({ ...props }: props) => {
             }
           }}
         >
-          {props.photoComponent.map((element, ind) =>
-            props.fileImage[ind].url !== '' ? (
+          {props.getAssets.map((element, ind) =>
+            props.getAssets[ind].url !== '' ? (
               <SwiperSlide key={ind}>
                 <ArtistPhoto className={String(ind)}>
                   <IndexNumber>{ind + 1}</IndexNumber>
-                  <UploadPhoto src={props.fileImage[ind].url} />
-                  <AddButton
-                    type="file"
-                    accept="image/jpg,impge/png,image/jpeg,image/gif"
-                    onChange={props.photoUpload()}
-                    id={String(ind)}
-                  />
+                  <UploadPhoto src={props.getAssets[ind].url} />
+                  <AddButton type="file" onChange={props.photoUpload()} id={String(ind)} />
                   <ButtonBundle>
                     <Delete onClick={props.deleteFileImage()} id={String(ind)}>
                       삭제
@@ -74,12 +78,7 @@ const EditWorkLayout = ({ ...props }: props) => {
                 <ArtistPhoto className={String(ind)}>
                   <IndexNumber>{ind + 1}</IndexNumber>
                   <Photo />
-                  <AddButton
-                    type="file"
-                    accept="image/jpg,impge/png,image/jpeg,image/gif"
-                    onChange={props.photoUpload()}
-                    id={String(ind)}
-                  />
+                  <AddButton type="file" onChange={props.photoUpload()} id={String(ind)} />
                   <Add htmlFor={String(ind)}>추가</Add>
                 </ArtistPhoto>
               </SwiperSlide>
@@ -110,7 +109,12 @@ const EditWorkLayout = ({ ...props }: props) => {
       </Work>
       <WorkExplain>
         <WorkName>작품 설명</WorkName>
-        <Input placeholder="작품 제목을 입력해주세요" maxLength={30} onKeyUp={props.checkTitleLength()} />
+        <Input
+          placeholder="작품 제목을 입력해주세요"
+          maxLength={30}
+          onKeyUp={props.checkTitleLength()}
+          defaultValue={props.title}
+        />
         <TitleCount>
           <span>{props.titleLength}</span>/30자
         </TitleCount>
@@ -118,12 +122,13 @@ const EditWorkLayout = ({ ...props }: props) => {
           placeholder="작품 설명을 적어주세요"
           maxLength={900}
           onKeyUp={props.checkIntroduceLength()}
+          defaultValue={props.description}
         />
         <TextAreaCount>
           <span>{props.introduceLength}</span>/900자
         </TextAreaCount>
       </WorkExplain>
-      <Next>저장</Next>
+      <Next onClick={props.updateInfo()}>저장</Next>
     </Container>
   )
 }

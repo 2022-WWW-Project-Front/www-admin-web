@@ -3,7 +3,7 @@ import RegisterStep3Layout from '@layout/register-information/RegisterStep3Layou
 import Photo from '@layout/common/Photo'
 import { useNavigate } from 'react-router-dom'
 import Modal from '@components/modal/Modal'
-import { useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { step3, reset } from '@stores/step3Slice'
 
 const RegisterStep3 = () => {
@@ -27,6 +27,10 @@ const RegisterStep3 = () => {
   const [workName, setWorkName] = useState<string>('')
   const [workExplain, setWorkExplain] = useState<string>('')
   const dispatch = useDispatch()
+  const regiserInformation = useSelector((state) => {
+    console.log(state)
+    return state
+  })
 
   const addPhoto = () => {
     setIndex(index + 1)

@@ -4,11 +4,13 @@ import styled from 'styled-components'
 interface props {
   checkValue: Function
   artistNameChange: Function
-  contractChange: Function
+  emailChange: Function
+  linkTreeChange: Function
   goStep2: Function
   selectValue: string
   artistName?: string
-  contact?: string
+  email?: string
+  linkTree?: string
 }
 
 const RegisterStep1Layout = ({ ...props }: props) => {
@@ -91,11 +93,17 @@ const RegisterStep1Layout = ({ ...props }: props) => {
         <AuthorName>작가명</AuthorName>
         <AuthorInput onChange={props.artistNameChange()} placeholder="작가명을 입력해주세요" />
       </Author>
-      <Contact>
-        <ContactMeans>연락처</ContactMeans>
-        <ContactInput onChange={props.contractChange()} placeholder="인스타 ID or e-mail or site" />
-      </Contact>
-      {props.artistName !== '' && props.contact !== '' ? (
+      <Contacts>
+        <Contact>
+          <ContactMeans>이메일</ContactMeans>
+          <ContactInput onChange={props.emailChange()} placeholder="e-mail" />
+        </Contact>
+        <Contact>
+          <ContactMeans>링크트리 (선택)</ContactMeans>
+          <ContactInput onChange={props.linkTreeChange()} placeholder="링크트리 링크" />
+        </Contact>
+      </Contacts>
+      {props.artistName !== '' && props.email !== '' ? (
         <Next style={{ backgroundColor: '#1635F4', cursor: 'pointer' }} onClick={props.goStep2()}>
           다음
         </Next>
@@ -230,9 +238,13 @@ const AuthorInput = styled.input`
   }
   text-indent: calc(100vh * 2 / 100);
 `
+const Contacts = styled.div`
+  display: flex;
+`
+
 const Contact = styled.div`
   position: relative;
-  top: calc(100vh * 30 / 100);
+  top: calc(100vh * 34 / 100);
   left: calc(100vw * 8.8 / 100);
 `
 const ContactMeans = styled.div`
@@ -244,8 +256,9 @@ const ContactMeans = styled.div`
 const ContactInput = styled.input`
   position: relative;
   top: calc(100vh * 7 / 100);
-  width: calc(100vw * 49.5 / 100);
+  width: calc(100vw * 23 / 100);
   height: calc(100vh * 6 / 100);
+  margin-right: calc(100vw * 3.2 / 100);
   font: calc(100vh * 3 / 100) Pretendard;
   font-weight: 700;
   border: calc(100vh * 0.125 / 100) solid #242528;

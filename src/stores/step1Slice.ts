@@ -2,14 +2,16 @@ import { createSlice } from '@reduxjs/toolkit'
 
 interface step1 {
   genre: string
-  name: string
-  concat: string
+  nickname: string
+  email: string
+  linkTree: string
 }
 
 const initialState: step1 = {
   genre: '',
-  name: '',
-  concat: ''
+  nickname: '',
+  email: '',
+  linkTree: ''
 }
 
 const step1Slice = createSlice({
@@ -18,14 +20,16 @@ const step1Slice = createSlice({
   reducers: {
     step1: (state, action) => {
       state.genre = action.payload.genre
-      state.name = action.payload.name
-      state.concat = action.payload.concat
+      state.nickname = action.payload.nickname
+      state.email = action.payload.concat
+      state.linkTree = action.payload.linkTree
     },
     reset: (state) => {
       state = {
         genre: '',
-        name: '',
-        concat: ''
+        nickname: '',
+        email: '',
+        linkTree: ''
       }
     }
   }

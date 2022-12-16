@@ -5,11 +5,13 @@ import styled from 'styled-components'
 interface props {
   checkValue: Function
   artistNameChange: Function
-  contractChange: Function
-  goStep2: Function
+  emailChange: Function
+  linkTreeChange: Function
+  saveInfo: Function
   selectValue: string
-  artistName?: string
-  contact?: string
+  artistName: string
+  email: string
+  linkTree: string
 }
 
 const EditGenreAuthorLayout = ({ ...props }: props) => {
@@ -21,13 +23,17 @@ const EditGenreAuthorLayout = ({ ...props }: props) => {
           <Visual>
             <VisualImg />
             <SelectCheck>
-              <Radio
-                type="radio"
-                name="select"
-                value="visual"
-                onClick={props.checkValue()}
-                defaultChecked={props.selectValue === 'visual'}
-              />
+              {props.selectValue === 'visual' ? (
+                <Radio
+                  type="radio"
+                  name="select"
+                  value="visual"
+                  onClick={props.checkValue()}
+                  defaultChecked
+                />
+              ) : (
+                <Radio type="radio" name="select" value="visual" onClick={props.checkValue()} />
+              )}
               {props.selectValue === 'visual' ? (
                 <Selector>시각</Selector>
               ) : (
@@ -38,13 +44,11 @@ const EditGenreAuthorLayout = ({ ...props }: props) => {
           <Media>
             <MediaImg />
             <SelectCheck>
-              <Radio
-                type="radio"
-                name="select"
-                value="media"
-                onClick={props.checkValue()}
-                defaultChecked={props.selectValue === 'media'}
-              />
+              {props.selectValue === 'media' ? (
+                <Radio type="radio" name="select" value="media" onClick={props.checkValue()} defaultChecked />
+              ) : (
+                <Radio type="radio" name="select" value="media" onClick={props.checkValue()} />
+              )}
               {props.selectValue === 'media' ? (
                 <Selector>미디어</Selector>
               ) : (
@@ -55,13 +59,17 @@ const EditGenreAuthorLayout = ({ ...props }: props) => {
           <Living>
             <LivingImg />
             <SelectCheck>
-              <Radio
-                type="radio"
-                name="select"
-                value="living"
-                onClick={props.checkValue()}
-                defaultChecked={props.selectValue === 'living'}
-              />
+              {props.selectValue === 'living' ? (
+                <Radio
+                  type="radio"
+                  name="select"
+                  value="living"
+                  onClick={props.checkValue()}
+                  defaultChecked
+                />
+              ) : (
+                <Radio type="radio" name="select" value="living" onClick={props.checkValue()} />
+              )}
               {props.selectValue === 'living' ? (
                 <Selector>리빙</Selector>
               ) : (
@@ -72,13 +80,17 @@ const EditGenreAuthorLayout = ({ ...props }: props) => {
           <Fashion>
             <FashionImg />
             <SelectCheck>
-              <Radio
-                type="radio"
-                name="select"
-                value="fashion"
-                onClick={props.checkValue()}
-                defaultChecked={props.selectValue === 'fashion'}
-              />
+              {props.selectValue === 'fashion' ? (
+                <Radio
+                  type="radio"
+                  name="select"
+                  value="fashion"
+                  onClick={props.checkValue()}
+                  defaultChecked
+                />
+              ) : (
+                <Radio type="radio" name="select" value="fashion" onClick={props.checkValue()} />
+              )}
               {props.selectValue === 'fashion' ? (
                 <Selector>패션</Selector>
               ) : (
@@ -90,13 +102,27 @@ const EditGenreAuthorLayout = ({ ...props }: props) => {
       </Genre>
       <Author>
         <AuthorName>작가명</AuthorName>
-        <AuthorInput onChange={props.artistNameChange()} placeholder="작가명을 입력해주세요" />
+        <AuthorInput
+          onChange={props.artistNameChange()}
+          placeholder="작가명을 입력해주세요"
+          defaultValue={props.artistName}
+        />
       </Author>
-      <Contact>
-        <ContactMeans>연락처</ContactMeans>
-        <ContactInput onChange={props.contractChange()} placeholder="인스타 ID or e-mail or site" />
-      </Contact>
-      <Next>저장</Next>
+      <Contacts>
+        <Contact>
+          <ContactMeans>이메일</ContactMeans>
+          <ContactInput onChange={props.emailChange()} placeholder="e-mail" value={props.email} />
+        </Contact>
+        <Contact>
+          <ContactMeans>링크트리 (선택)</ContactMeans>
+          <ContactInput
+            onChange={props.linkTreeChange()}
+            placeholder="링크트리 링크"
+            defaultValue={props.linkTree}
+          />
+        </Contact>
+      </Contacts>
+      <Next onClick={props.saveInfo()}>저장</Next>
     </Container>
   )
 }
@@ -225,9 +251,12 @@ const AuthorInput = styled.input`
   }
   text-indent: calc(100vh * 2 / 100);
 `
+const Contacts = styled.div`
+  display: flex;
+`
 const Contact = styled.div`
   position: relative;
-  top: calc(100vh * 30 / 100);
+  top: calc(100vh * 34 / 100);
   left: calc(100vw * 8.8 / 100);
 `
 const ContactMeans = styled.div`
@@ -239,8 +268,9 @@ const ContactMeans = styled.div`
 const ContactInput = styled.input`
   position: relative;
   top: calc(100vh * 7 / 100);
-  width: calc(100vw * 49.5 / 100);
+  width: calc(100vw * 23 / 100);
   height: calc(100vh * 6 / 100);
+  margin-right: calc(100vw * 3.2 / 100);
   font: calc(100vh * 3 / 100) Pretendard;
   font-weight: 700;
   border: calc(100vh * 0.125 / 100) solid #242528;

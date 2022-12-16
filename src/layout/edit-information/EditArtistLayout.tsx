@@ -8,8 +8,10 @@ interface props {
   contentLength: number
   introduceLength: number
   photoUpload: Function
-  goStep3: Function
+  saveInfo: Function
   fileImage: string
+  bio: string
+  description: string
 }
 
 const EditArtistLayout = ({ ...props }: props) => {
@@ -18,29 +20,16 @@ const EditArtistLayout = ({ ...props }: props) => {
       <Artist>
         <ArtistArea>아티스트 사진</ArtistArea>
         <ArtistPhotoAndExplanation>
-          {props.fileImage !== '' ? (
-            <ArtistPhoto>
-              <UploadPhoto src={props.fileImage} />
-              <AddButton
-                type="file"
-                accept="image/jpg,impge/png,image/jpeg,image/gif"
-                onChange={props.photoUpload()}
-                id="AddandEdit"
-              />
-              <Edit htmlFor="AddandEdit">변경</Edit>
-            </ArtistPhoto>
-          ) : (
-            <ArtistPhoto>
-              <Photo />
-              <AddButton
-                type="file"
-                accept="image/jpg,impge/png,image/jpeg,image/gif"
-                onChange={props.photoUpload()}
-                id="AddandEdit"
-              />
-              <Add htmlFor="AddandEdit">추가</Add>
-            </ArtistPhoto>
-          )}
+          <ArtistPhoto>
+            <UploadPhoto src={props.fileImage} />
+            <AddButton
+              type="file"
+              accept="image/jpg,impge/png,image/jpeg,image/gif"
+              onChange={props.photoUpload()}
+              id="AddandEdit"
+            />
+            <Edit htmlFor="AddandEdit">변경</Edit>
+          </ArtistPhoto>
 
           <Explanation>
             <ExplanationList>권장사이즈 : 500x500 px이상</ExplanationList>
@@ -60,6 +49,7 @@ const EditArtistLayout = ({ ...props }: props) => {
           placeholder="본인소개를 간단하게 적어주세요"
           onKeyUp={props.checkIntroduceLength()}
           maxLength={30}
+          defaultValue={props.bio}
         />
         <TitleCount>
           <span>{props.introduceLength}</span>/30자
@@ -68,12 +58,13 @@ const EditArtistLayout = ({ ...props }: props) => {
           placeholder="본인을 설명할만한 문구, 간단한 약력, 지향하는 디자인 등 자류롭게 적어주세요"
           onKeyUp={props.checkContentLength()}
           maxLength={900}
+          defaultValue={props.description}
         />
         <TextAreaCount>
           <span>{props.contentLength}</span>/900자
         </TextAreaCount>
       </ArtistExplain>
-      <Next>저장</Next>
+      <Next onClick={props.saveInfo()}>저장</Next>
     </Container>
   )
 }

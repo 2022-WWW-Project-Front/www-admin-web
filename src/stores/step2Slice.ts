@@ -1,13 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 interface step2 {
-  profile: string
+  profile: []
   bio: string
   description: string
 }
 
 const initialState: step2 = {
-  profile: '',
+  profile: [],
   bio: '',
   description: ''
 }
@@ -23,7 +23,7 @@ const step2Slice = createSlice({
     },
     reset: (state) => {
       state = {
-        profile: '',
+        profile: [],
         bio: '',
         description: ''
       }
