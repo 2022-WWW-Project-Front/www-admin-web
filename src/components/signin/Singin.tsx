@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import SigninLayout from '@layout/signin/SigninLayout'
 import { useNavigate } from 'react-router-dom'
-import { useRequestSignInMutation, useRequestArtworkDetailMutation } from '@api/api'
+import { useRequestSignInMutation } from '@api/api'
 import { useDispatch } from 'react-redux'
 import { artistCode } from '@stores/artistCodeSlice'
 import { step1 } from '@stores/step1Slice'

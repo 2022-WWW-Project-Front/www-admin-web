@@ -12,7 +12,9 @@ interface props {
   checkIntroduceLength: Function
   introduceLength: number
   filesImage: {
-    id: number
+    genre: string
+    isMain: boolean
+    type: string
     url: string
   }[]
   fileImage: string
@@ -27,6 +29,9 @@ interface props {
     type: string
     url: string
   }[]
+  photoComponentIndex: number
+  workPhotoUpload: Function
+  workDeleteFileImage: Function
 }
 
 const EditWorkLayout = ({ ...props }: props) => {
@@ -58,15 +63,20 @@ const EditWorkLayout = ({ ...props }: props) => {
             }
           }}
         >
-          {props.getAssets.map((element, ind) =>
-            props.getAssets[ind].url !== '' ? (
+          {props.getAssets.map((assets: any, ind) =>
+            assets.url !== '' ? (
               <SwiperSlide key={ind}>
                 <ArtistPhoto className={String(ind)}>
                   <IndexNumber>{ind + 1}</IndexNumber>
-                  <UploadPhoto src={props.getAssets[ind].url} />
-                  <AddButton type="file" onChange={props.photoUpload()} id={String(ind)} />
+                  <UploadPhoto src={assets.url ? assets.url : assets} />
+                  <AddButton
+                    accept="image/jpg,impge/png,image/jpeg,image/gif"
+                    type="file"
+                    onChange={props.workPhotoUpload()}
+                    id={String(ind)}
+                  />
                   <ButtonBundle>
-                    <Delete onClick={props.deleteFileImage()} id={String(ind)}>
+                    <Delete onClick={props.workDeleteFileImage()} id={String(ind)}>
                       삭제
                     </Delete>
                     <Edit htmlFor={String(ind)}>변경</Edit>
@@ -74,16 +84,46 @@ const EditWorkLayout = ({ ...props }: props) => {
                 </ArtistPhoto>
               </SwiperSlide>
             ) : (
-              <SwiperSlide key={ind}>
+              <></>
+            )
+          )}
+          {props.photoComponent.map((element, ind) =>
+            props.filesImage[ind].url !== '' ? (
+              <SwiperSlide key={props.photoComponentIndex + ind + 1}>
                 <ArtistPhoto className={String(ind)}>
-                  <IndexNumber>{ind + 1}</IndexNumber>
+                  <IndexNumber>{props.photoComponentIndex + ind + 1}</IndexNumber>
+                  <UploadPhoto src={props.filesImage[ind].url} />
+                  <AddButton
+                    type="file"
+                    accept="image/jpg,impge/png,image/jpeg,image/gif"
+                    onChange={props.photoUpload()}
+                    id={String(props.photoComponentIndex + ind)}
+                  />
+                  <ButtonBundle>
+                    <Delete onClick={props.deleteFileImage()} id={String(props.photoComponentIndex + ind)}>
+                      삭제
+                    </Delete>
+                    <Edit htmlFor={String(props.photoComponentIndex + ind)}>변경</Edit>
+                  </ButtonBundle>
+                </ArtistPhoto>
+              </SwiperSlide>
+            ) : (
+              <SwiperSlide key={props.photoComponentIndex + ind + 1}>
+                <ArtistPhoto className={String(props.photoComponentIndex + ind)}>
+                  <IndexNumber>{props.photoComponentIndex + ind + 1}</IndexNumber>
                   <Photo />
-                  <AddButton type="file" onChange={props.photoUpload()} id={String(ind)} />
-                  <Add htmlFor={String(ind)}>추가</Add>
+                  <AddButton
+                    type="file"
+                    accept="image/jpg,impge/png,image/jpeg,image/gif"
+                    onChange={props.photoUpload()}
+                    id={String(props.photoComponentIndex + ind)}
+                  />
+                  <Add htmlFor={String(props.photoComponentIndex + ind)}>추가</Add>
                 </ArtistPhoto>
               </SwiperSlide>
             )
           )}
+
           <SwiperSlide>
             <AddPhotoButton onClick={props.addPhoto()}>
               <svg

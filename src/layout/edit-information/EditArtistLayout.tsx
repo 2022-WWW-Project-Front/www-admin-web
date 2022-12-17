@@ -49,7 +49,7 @@ const EditArtistLayout = ({ ...props }: props) => {
           placeholder="본인소개를 간단하게 적어주세요"
           onKeyUp={props.checkIntroduceLength()}
           maxLength={30}
-          defaultValue={props.bio}
+          defaultValue={props.description}
         />
         <TitleCount>
           <span>{props.introduceLength}</span>/30자
@@ -58,7 +58,7 @@ const EditArtistLayout = ({ ...props }: props) => {
           placeholder="본인을 설명할만한 문구, 간단한 약력, 지향하는 디자인 등 자류롭게 적어주세요"
           onKeyUp={props.checkContentLength()}
           maxLength={900}
-          defaultValue={props.description}
+          defaultValue={props.bio}
         />
         <TextAreaCount>
           <span>{props.contentLength}</span>/900자

@@ -23,12 +23,12 @@ const EditArtist = () => {
 
   const checkContentLength = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setContentLength(e.target.value.replace(/<br\s*\/?>/gm, '\n').length)
-    setDescription(e.target.value.trim())
+    setBio(e.target.value.trim())
   }
 
   const checkIntroduceLength = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setIntroduceLength(e.target.value.replace(/<br\s*\/?>/gm, '\n').length)
-    setBio(e.target.value.trim())
+    setDescription(e.target.value.trim())
   }
 
   const photoUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -64,6 +64,7 @@ const EditArtist = () => {
           code: code.artistCode
         })
       }
+      alert('수정이 완료되었습니다!')
     }
   }
 

@@ -58,10 +58,7 @@ const EditGenreAuthor = () => {
           linkTree: linkTree
         }
       })
-      console.log(selectValue)
-      console.log(artistName)
-      console.log(email)
-      console.log(linkTree)
+      alert('수정이 완료되었습니다!')
     }
   }
 
